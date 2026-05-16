@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Phone, MapPin, BadgeCheck } from "lucide-react";
+import { Phone, Mail, MapPin, BadgeCheck } from "lucide-react";
 import FadeUp from "@/components/FadeUp";
 
 const services = [
@@ -15,9 +15,10 @@ const services = [
 ];
 
 const contactInfo = [
-  { Icon: Phone,      title: "502-542-4473",               sub: "Call, Text, or DM" },
-  { Icon: MapPin,     title: "Somerset, KY",               sub: "Serving the Lake Cumberland region" },
-  { Icon: BadgeCheck, title: "Free estimates · Insured",   sub: "Professional & experienced crew" },
+  { Icon: Phone,      title: "502-542-4473",                sub: "Call, Text, or DM" },
+  { Icon: Mail,       title: "rustandsawdustky@gmail.com",  sub: "Email us anytime" },
+  { Icon: MapPin,     title: "Somerset, KY",                sub: "Serving the Lake Cumberland region" },
+  { Icon: BadgeCheck, title: "Free estimates · Insured",    sub: "Professional & experienced crew" },
 ];
 
 export default function ContactSection() {
@@ -105,6 +106,10 @@ export default function ContactSection() {
                 <div className="space-y-2">
                   <Label className="text-walnut dark:text-stone text-xs tracking-wide uppercase">Phone Number</Label>
                   <Input type="tel" placeholder="(606) 555-0000" required className="bg-cream dark:bg-charcoal border-cedar/20 text-charcoal dark:text-cream placeholder:text-stone/60 focus-visible:ring-cedar rounded-lg" />
+                </div>
+                <div className="space-y-2">
+                  <Label className="text-walnut dark:text-stone text-xs tracking-wide uppercase">Email Address</Label>
+                  <Input type="email" placeholder="you@example.com" required className="bg-cream dark:bg-charcoal border-cedar/20 text-charcoal dark:text-cream placeholder:text-stone/60 focus-visible:ring-cedar rounded-lg" />
                 </div>
                 <div className="space-y-2">
                   <Label className="text-walnut dark:text-stone text-xs tracking-wide uppercase">Service Needed</Label>

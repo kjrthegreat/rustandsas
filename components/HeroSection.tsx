@@ -16,11 +16,11 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/55 to-charcoal/85" />
 
       {/* Hero content */}
-      <div className="relative z-10 flex flex-col flex-1 justify-center px-6 md:px-16 lg:px-24 pt-36 pb-44">
+      <div className="relative z-10 flex flex-col flex-1 justify-center items-center text-center px-6 md:px-16 lg:px-24 pt-36 pb-44">
         <p className="text-sm font-semibold tracking-[0.2em] uppercase text-cedar-pale mb-7">
           Somerset, Kentucky &nbsp;·&nbsp; In God We Trust
         </p>
-        <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold text-white-warm leading-tight mb-8 max-w-4xl">
+        <h1 className="font-heading text-7xl md:text-9xl lg:text-[11rem] font-bold text-white-warm leading-tight mb-8 max-w-5xl">
           Custom building.
           <br />
           <em className="font-normal text-cedar-pale">Crafted right.</em>
@@ -30,7 +30,7 @@ export default function HeroSection() {
           built by an insured, experienced crew serving the Lake Cumberland
           region. Call or text for a free quote today.
         </p>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 justify-center">
           <Link
             href="#contact"
             className="inline-flex items-center justify-center rounded-full bg-cedar hover:bg-cedar-light text-white-warm font-semibold tracking-wide px-8 h-11"
