@@ -62,7 +62,7 @@ export default function HeroSection() {
 
       {/* Bottom ribbon — newspaper-style scrolling info */}
       <div className="absolute bottom-0 left-0 right-0 z-10 bg-oil border-t-[3px] border-cedar">
-        <div className="flex flex-wrap divide-x divide-cedar/30">
+        <div className="flex flex-wrap justify-center md:divide-x md:divide-cedar/30">
           {[
             { num: "01", label: "Insured" },
             { num: "02", label: "Free Estimates" },
@@ -70,9 +70,12 @@ export default function HeroSection() {
             { num: "04", label: "Veteran Discount" },
             { num: "05", label: "502-542-4473" },
           ].map((stat) => (
-            <div key={stat.label} className="flex-1 min-w-[140px] flex items-center justify-center gap-2 py-3 px-3">
+            <div
+              key={stat.label}
+              className="flex items-center justify-center gap-2 py-3 px-3 w-1/2 sm:w-1/3 md:flex-1 md:w-auto"
+            >
               <span className="font-stencil text-cedar text-lg">{stat.num}</span>
-              <span className="font-stamped text-[10px] tracking-[0.2em] uppercase text-cream-dark">
+              <span className="font-stamped text-[10px] tracking-[0.2em] uppercase text-cream-dark whitespace-nowrap">
                 {stat.label}
               </span>
             </div>
