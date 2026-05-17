@@ -24,7 +24,7 @@ export default function HeroSection() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 flex flex-col flex-1 justify-center items-center text-center px-5 sm:px-6 md:px-16 lg:px-24 pt-32 pb-48 sm:pt-40 sm:pb-44 md:pt-44 md:pb-44">
+      <div className="relative z-10 flex flex-col flex-1 justify-center items-center text-center px-5 sm:px-6 md:px-16 lg:px-24 pt-32 pb-32 sm:pt-40 sm:pb-36 md:pt-44 md:pb-44">
         {/* Top eyebrow — stamped */}
         <div className="flex items-center gap-3 mb-6 font-stamped text-cedar-pale text-[11px] tracking-[0.3em] uppercase">
           <span className="block w-8 h-px bg-cedar" />
@@ -60,9 +60,9 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom ribbon — stat strip; reshapes per breakpoint */}
+      {/* Bottom ribbon — 3+2 layout on mobile/tablet, single row on desktop */}
       <div className="absolute bottom-0 left-0 right-0 z-10 bg-oil border-t-[3px] border-cedar">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
+        <div className="grid grid-cols-6 md:grid-cols-5 md:divide-x md:divide-cedar/25 items-center">
           {[
             { num: "01", label: "Insured" },
             { num: "02", label: "Free Estimates" },
@@ -71,22 +71,25 @@ export default function HeroSection() {
             { num: "05", label: "502-542-4473", phone: true },
           ].map((stat, i) => {
             const isPhone = i === 4;
-            const classes = [
-              "flex items-center justify-center gap-2 py-3 px-3 whitespace-nowrap",
-              // The phone item: spans 2 cols on mobile (full-width row),
-              // spans 2 of 3 cols on sm (sits next to item 04 in row 2),
-              // back to a single cell on md+
-              isPhone ? "col-span-2 sm:col-span-2 md:col-span-1" : "",
-              // Top divider only on the phone item when it sits in its own mobile row
-              isPhone ? "border-t border-cedar/25 sm:border-t-0" : "",
-              // Vertical dividers only on md+ where everything is in one row
-              i > 0 ? "md:border-l md:border-cedar/25" : "",
-            ].join(" ");
+            // Mobile/tablet grid-cols-6: items 1-3 each col-span-2 fill row 1.
+            // Item 4 col-start-2 col-span-2 sits at cols 2-3 of row 2; item 5 col-span-2
+            // sits at cols 4-5 — leaves cols 1 & 6 empty so the pair centers.
+            // On md+ everything reverts to one cell each.
+            const colClasses =
+              i < 3
+                ? "col-span-2 md:col-span-1"
+                : i === 3
+                ? "col-span-2 col-start-2 md:col-span-1 md:col-start-auto"
+                : "col-span-2 md:col-span-1";
+
+            const classes = `flex items-center justify-center gap-1.5 sm:gap-2 py-2 px-2 sm:py-2.5 md:py-3 sm:px-3 whitespace-nowrap ${colClasses}`;
 
             const inner = (
               <>
-                <span className="font-stencil text-cedar text-lg">{stat.num}</span>
-                <span className="font-stamped text-[10px] tracking-[0.2em] uppercase text-cream-dark">
+                <span className="font-stencil text-cedar text-sm sm:text-base md:text-lg">
+                  {stat.num}
+                </span>
+                <span className="font-stamped text-[9px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.2em] uppercase text-cream-dark">
                   {stat.label}
                 </span>
               </>
