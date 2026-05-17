@@ -51,7 +51,7 @@ function Stars({ size = "text-base" }: { size?: string }) {
 
 export default function ReviewsSection() {
   return (
-    <section id="reviews" className="relative py-24 px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-charcoal-mid">
+    <section id="reviews" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-charcoal-mid">
       <div className="relative max-w-6xl mx-auto">
 
         {/* Header */}
@@ -68,9 +68,9 @@ export default function ReviewsSection() {
           </div>
 
           {/* Rating summary block */}
-          <div className="flex items-center gap-5 border-l-2 border-charcoal/30 dark:border-cedar/30 pl-5">
+          <div className="flex items-center gap-5 border-t-2 md:border-t-0 md:border-l-2 border-charcoal/30 dark:border-cedar/30 pt-4 md:pt-0 md:pl-5">
             <div>
-              <div className="font-stencil text-6xl text-charcoal dark:text-cream leading-none">4.9</div>
+              <div className="font-stencil text-5xl sm:text-6xl text-charcoal dark:text-cream leading-none">4.9</div>
               <div className="font-stamped text-[10px] tracking-[0.25em] uppercase text-walnut dark:text-stone mt-1">
                 out of 5
               </div>

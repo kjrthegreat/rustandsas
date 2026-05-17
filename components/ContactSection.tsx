@@ -61,8 +61,8 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="relative py-24 px-6 md:px-16 lg:px-24 bg-paper dark:bg-charcoal overflow-hidden">
-      <div className="relative max-w-6xl mx-auto grid lg:grid-cols-[5fr_6fr] gap-12 items-start">
+    <section id="contact" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-paper dark:bg-charcoal overflow-hidden">
+      <div className="relative max-w-6xl mx-auto grid lg:grid-cols-[5fr_6fr] gap-10 lg:gap-12 items-start">
 
         <FadeUp>
           <div className="font-stamped text-[11px] tracking-[0.3em] uppercase text-rust dark:text-cedar-pale mb-3">

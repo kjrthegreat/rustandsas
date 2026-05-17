@@ -24,7 +24,7 @@ export default function HeroSection() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 flex flex-col flex-1 justify-center items-center text-center px-6 md:px-16 lg:px-24 pt-44 pb-44">
+      <div className="relative z-10 flex flex-col flex-1 justify-center items-center text-center px-5 sm:px-6 md:px-16 lg:px-24 pt-32 pb-36 sm:pt-40 sm:pb-40 md:pt-44 md:pb-44">
         {/* Top eyebrow — stamped */}
         <div className="flex items-center gap-3 mb-6 font-stamped text-cedar-pale text-[11px] tracking-[0.3em] uppercase">
           <span className="block w-8 h-px bg-cedar" />

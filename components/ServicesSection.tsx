@@ -13,7 +13,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="relative py-24 px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-charcoal overflow-hidden">
+    <section id="services" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-charcoal overflow-hidden">
       <div className="relative max-w-6xl mx-auto">
 
         {/* Header — newspaper masthead */}
@@ -26,10 +26,10 @@ export default function ServicesSection() {
               Somerset · Lake Cumberland · Kentucky
             </div>
           </div>
-          <h2 className="font-stencil text-6xl md:text-8xl text-charcoal dark:text-cream leading-[0.9] mt-4">
+          <h2 className="font-stencil text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-charcoal dark:text-cream leading-[0.9] mt-4">
             If you can dream it,
           </h2>
-          <h2 className="font-stencil text-6xl md:text-8xl text-rust dark:text-cedar-pale leading-[0.9] mt-1">
+          <h2 className="font-stencil text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-rust dark:text-cedar-pale leading-[0.9] mt-1">
             we&apos;ll build it.
           </h2>
           <p className="mt-5 font-hand text-2xl text-walnut dark:text-stone tilt-l">

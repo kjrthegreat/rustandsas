@@ -45,7 +45,7 @@ export default function Footer() {
       />
 
       {/* Big stenciled wordmark */}
-      <div className="relative max-w-6xl mx-auto px-6 md:px-16 lg:px-24 pt-14 pb-10 text-center">
+      <div className="relative max-w-6xl mx-auto px-5 sm:px-6 md:px-16 lg:px-24 pt-10 sm:pt-12 md:pt-14 pb-8 md:pb-10 text-center">
         <div className="font-stencil text-5xl md:text-7xl lg:text-8xl text-cream leading-none tracking-wide">
           RUST<span className="text-rust">&amp;</span>SAWDUST
         </div>
@@ -58,7 +58,7 @@ export default function Footer() {
       </div>
 
       {/* Double-rule divider — equal thirds so the 3 blocks line up evenly */}
-      <div className="relative max-w-6xl mx-auto px-6 md:px-16 lg:px-24">
+      <div className="relative max-w-6xl mx-auto px-5 sm:px-6 md:px-16 lg:px-24">
         <div className="border-y-[3px] border-double border-cedar/40 py-6 grid grid-cols-1 md:grid-cols-3 items-center gap-y-4 gap-x-6">
           <ul className="flex flex-wrap gap-x-5 gap-y-2 list-none justify-center md:justify-start">
             {links.map((link) => (
@@ -92,7 +92,7 @@ export default function Footer() {
       </div>
 
       {/* Tiny stamp row */}
-      <div className="relative max-w-6xl mx-auto px-6 md:px-16 lg:px-24 py-6 flex flex-col md:flex-row items-center justify-between gap-3 flex-wrap">
+      <div className="relative max-w-6xl mx-auto px-5 sm:px-6 md:px-16 lg:px-24 py-5 sm:py-6 flex flex-col md:flex-row items-center justify-between gap-3 flex-wrap text-center md:text-left">
         <div className="font-stamped text-[10px] tracking-[0.25em] uppercase text-stone">
           Family operated · KY proud · Insured · 2-yr warranty
         </div>

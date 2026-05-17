@@ -18,7 +18,7 @@ const cards = [
 
 export default function BeforeAfterSection() {
   return (
-    <section id="ba" className="py-24 px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-oil">
+    <section id="ba" className="py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-oil">
       <div className="max-w-6xl mx-auto">
 
         <FadeUp className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-4">

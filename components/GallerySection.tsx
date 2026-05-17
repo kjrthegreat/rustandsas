@@ -13,7 +13,7 @@ const galleryItems = [
 
 export default function GallerySection() {
   return (
-    <section id="work" className="relative py-24 px-6 md:px-16 lg:px-24 bg-paper dark:bg-charcoal-mid overflow-hidden">
+    <section id="work" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-paper dark:bg-charcoal-mid overflow-hidden">
 
       {/* Subtle "shop wall" texture */}
       <div

@@ -13,8 +13,8 @@ const badges = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative py-24 px-6 md:px-16 lg:px-24 bg-paper dark:bg-charcoal-mid overflow-hidden">
-      <div className="relative max-w-6xl mx-auto grid lg:grid-cols-[5fr_6fr] gap-16 items-center">
+    <section id="about" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-paper dark:bg-charcoal-mid overflow-hidden">
+      <div className="relative max-w-6xl mx-auto grid lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16 items-center">
 
         <FadeUp>
           <div className="relative max-w-md mx-auto">

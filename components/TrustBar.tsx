@@ -10,7 +10,7 @@ const items = [
 
 export default function TrustBar() {
   return (
-    <div className="bg-oil text-cream-dark border-y-[3px] border-cedar/70 py-4 px-4 relative overflow-hidden">
+    <div className="bg-oil text-cream-dark border-y-[3px] border-cedar/70 py-3 sm:py-4 px-4 relative overflow-hidden">
       {/* Diagonal grit stripes */}
       <div
         className="absolute inset-0 opacity-[0.06] pointer-events-none"
