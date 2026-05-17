@@ -83,11 +83,11 @@ export default function ContactSection() {
             <ol className="space-y-3 text-walnut dark:text-stone text-sm">
               <li className="flex gap-3">
                 <span className="font-stencil text-rust dark:text-cedar-pale text-lg leading-none">01.</span>
-                <span><strong className="text-charcoal dark:text-cream">Text or call</strong> our business number — that&apos;s the fastest way.</span>
+                <span><strong className="text-charcoal dark:text-cream">Submit a form</strong> and get your quote today.</span>
               </li>
               <li className="flex gap-3">
                 <span className="font-stencil text-rust dark:text-cedar-pale text-lg leading-none">02.</span>
-                <span>If we can&apos;t price it over the phone, we&apos;ll come out for a <strong className="text-charcoal dark:text-cream">free on-site estimate</strong>.</span>
+                <span>We&apos;ll respond fast with a price — or come out for a <strong className="text-charcoal dark:text-cream">free on-site estimate</strong>.</span>
               </li>
               <li className="flex gap-3">
                 <span className="font-stencil text-rust dark:text-cedar-pale text-lg leading-none">03.</span>
