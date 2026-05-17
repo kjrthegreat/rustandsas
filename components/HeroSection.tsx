@@ -3,61 +3,81 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-oil">
       {/* Background — zoomed in on porch structure, sky cropped out */}
       <Image
         src="/images/ep.png"
         alt="Rust & Sawdust — barn build"
         fill
         priority
-        className="object-cover object-[center_55%]"
+        className="object-cover object-[center_55%] opacity-80"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/55 to-charcoal/85" />
+      {/* Grit overlay + vignette */}
+      <div className="absolute inset-0 bg-gradient-to-b from-oil/85 via-oil/45 to-oil/95" />
+      <div
+        className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-50"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")",
+        }}
+      />
 
       {/* Hero content */}
-      <div className="relative z-10 flex flex-col flex-1 justify-center items-center text-center px-6 md:px-16 lg:px-24 pt-36 pb-44">
-        <p className="text-sm font-semibold tracking-[0.2em] uppercase text-cedar-pale mb-7">
-          Somerset, Kentucky &nbsp;·&nbsp; In God We Trust
-        </p>
-        <h1 className="font-heading text-7xl md:text-9xl lg:text-[11rem] font-bold text-white-warm leading-tight mb-8 max-w-5xl">
+      <div className="relative z-10 flex flex-col flex-1 justify-center items-center text-center px-6 md:px-16 lg:px-24 pt-44 pb-44">
+        {/* Top eyebrow — stamped */}
+        <div className="flex items-center gap-3 mb-6 font-stamped text-cedar-pale text-[11px] tracking-[0.3em] uppercase">
+          <span className="block w-8 h-px bg-cedar" />
+          <span>Somerset, Kentucky · In God We Trust</span>
+          <span className="block w-8 h-px bg-cedar" />
+        </div>
+
+        <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-cream leading-tight mb-7 max-w-4xl">
           Custom building.
           <br />
           <em className="font-normal text-cedar-pale">Crafted right.</em>
         </h1>
-        <p className="text-stone text-xl md:text-2xl max-w-2xl leading-relaxed mb-12">
+
+        <p className="text-stone text-base md:text-lg max-w-2xl leading-relaxed mb-10">
           Decks, porches, barns, remodels, concrete, and custom woodwork —
           built by an insured, experienced crew serving the Lake Cumberland
           region. Call or text for a free quote today.
         </p>
-        <div className="flex flex-wrap gap-4 justify-center">
+
+        <div className="flex flex-wrap gap-3 justify-center">
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center rounded-full bg-cedar hover:bg-cedar-light text-white-warm font-semibold tracking-wide px-8 h-11"
+            className="inline-flex items-center justify-center bg-rust hover:bg-cedar text-white-warm font-stencil text-base tracking-widest uppercase px-8 h-12 border-2 border-cream/90 shadow-[4px_4px_0_0_rgba(0,0,0,0.6)] hover:shadow-[2px_2px_0_0_rgba(0,0,0,0.6)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
           >
             Get a Free Quote
           </Link>
           <Link
             href="#work"
-            className="inline-flex items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/10 px-8 h-11"
+            className="inline-flex items-center justify-center font-stencil text-base tracking-widest uppercase text-cream-dark px-8 h-12 border-2 border-cream/40 hover:border-cedar hover:text-cedar-pale"
           >
             See Our Work →
           </Link>
         </div>
       </div>
 
-      {/* Stats bar — theme-aware overlay */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 flex divide-x divide-cedar/20 bg-white-warm/85 dark:bg-charcoal/80 backdrop-blur-sm border-t border-cedar/20">
-        {[
-          { num: "Insured", label: "& Experienced" },
-          { num: "Free", label: "Estimates" },
-          { num: "502", label: "542-4473" },
-        ].map((stat) => (
-          <div key={stat.label} className="flex-1 text-center py-5 px-4">
-            <div className="font-heading text-2xl font-bold text-cedar dark:text-cedar-pale">{stat.num}</div>
-            <div className="text-xs tracking-widest uppercase text-walnut dark:text-stone mt-1">{stat.label}</div>
-          </div>
-        ))}
+      {/* Bottom ribbon — newspaper-style scrolling info */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 bg-oil border-t-[3px] border-cedar">
+        <div className="flex flex-wrap divide-x divide-cedar/30">
+          {[
+            { num: "01", label: "Insured" },
+            { num: "02", label: "Free Estimates" },
+            { num: "03", label: "2-Yr Warranty" },
+            { num: "04", label: "Veteran Discount" },
+            { num: "05", label: "502-542-4473" },
+          ].map((stat) => (
+            <div key={stat.label} className="flex-1 min-w-[140px] flex items-center justify-center gap-2 py-3 px-3">
+              <span className="font-stencil text-cedar text-lg">{stat.num}</span>
+              <span className="font-stamped text-[10px] tracking-[0.2em] uppercase text-cream-dark">
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

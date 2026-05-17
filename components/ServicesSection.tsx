@@ -1,54 +1,72 @@
 import FadeUp from "@/components/FadeUp";
 
 const services = [
-  { num: "01", title: "Decks & Porches",      blurb: "Covered porches, open decks, and overhangs built with cedar and treated lumber. Seasonal pricing available." },
-  { num: "02", title: "Screened Rooms",        blurb: "Enclosed screened porches and outdoor living rooms — great for lake houses and year-round enjoyment." },
-  { num: "03", title: "Buildings & Barns",     blurb: "Post-frame pole barns, garages, and outbuildings with metal roofing. Seasonal pricing available." },
-  { num: "04", title: "Concrete",              blurb: "Driveways, patios, and flatwork. Stained and standard finishes. Seasonal pricing available." },
-  { num: "05", title: "Custom Woodwork",       blurb: "Live-edge countertops, pipe shelving, built-in bars, pergolas, and one-of-a-kind interior builds." },
-  { num: "06", title: "Windows & Trim",        blurb: "Window installation, interior trim work, and finish carpentry done with care and attention to detail." },
-  { num: "07", title: "Painting",              blurb: "Interior and exterior painting. Seasonal pricing available — a great time to freshen up your home." },
-  { num: "08", title: "Remodeling & Repairs",  blurb: "Kitchen, bathroom, and general home remodeling. No job too small — done right the first time." },
+  { num: "01", title: "Decks, Porches & Patio Covers", blurb: "Covered porches, open decks, awnings, and overhangs. Cedar & treated lumber. Seasonal pricing." },
+  { num: "02", title: "Screened Rooms & Pergolas",      blurb: "Screened porches, pergolas, and outdoor living rooms. Built for lake-house life." },
+  { num: "03", title: "Buildings, Barns & Sheds",       blurb: "Post-frame pole barns, garages, sheds, custom outbuildings — finished to match your home." },
+  { num: "04", title: "Concrete & Excavating",          blurb: "Driveways, patios, flatwork, site prep & excavating. Stained or standard." },
+  { num: "05", title: "Custom Woodwork",                blurb: "Live-edge counters, pipe shelving, bars, one-of-a-kind interior builds. Dream it, we build it." },
+  { num: "06", title: "Home Add-Ons & Remodels",        blurb: "Additions, bathrooms, kitchens, full renos. Residential and commercial work." },
+  { num: "07", title: "Windows, Trim & Painting",       blurb: "Window install, interior trim, finish carpentry, and interior/exterior paint." },
+  { num: "08", title: "Golf Greens & Specialty",        blurb: "Backyard golf greens and one-off custom projects. No job too big or small." },
 ];
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-24 px-6 md:px-16 lg:px-24 bg-white-warm dark:bg-charcoal">
-      <div className="max-w-6xl mx-auto">
+    <section id="services" className="relative py-24 px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-charcoal overflow-hidden">
+      <div className="relative max-w-6xl mx-auto">
 
-        {/* Header */}
-        <FadeUp className="mb-14 max-w-2xl">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="block w-6 h-px bg-cedar" />
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-cedar">What we do</span>
+        {/* Header — newspaper masthead */}
+        <FadeUp className="mb-14 border-y-[3px] border-double border-charcoal dark:border-cedar/50 py-6">
+          <div className="flex items-baseline justify-between gap-6 flex-wrap">
+            <div className="font-stamped text-[10px] tracking-[0.3em] uppercase text-rust dark:text-cedar-pale">
+              § Catalogue of Services · No. 1
+            </div>
+            <div className="font-stamped text-[10px] tracking-[0.3em] uppercase text-walnut dark:text-stone">
+              Somerset · Lake Cumberland · Kentucky
+            </div>
           </div>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-charcoal dark:text-white-warm leading-tight mb-5">
-            Custom building,
-            <br />
-            <em className="font-normal text-cedar">crafting & design.</em>
+          <h2 className="font-stencil text-6xl md:text-8xl text-charcoal dark:text-cream leading-[0.9] mt-4">
+            If you can dream it,
           </h2>
-          <p className="text-walnut dark:text-stone leading-relaxed text-base md:text-lg">
-            Seasonal pricing on decks, concrete, buildings, paint, and more.
-            Call or text{" "}
-            <span className="text-cedar font-semibold">502-542-4473</span>{" "}
-            and we&apos;ll figure out the best way to make it happen.
+          <h2 className="font-stencil text-6xl md:text-8xl text-rust dark:text-cedar-pale leading-[0.9] mt-1">
+            we&apos;ll build it.
+          </h2>
+          <p className="mt-5 font-hand text-2xl text-walnut dark:text-stone tilt-l">
+            — no matter what.
           </p>
         </FadeUp>
 
-        {/* 2-column card grid */}
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="mt-6 mb-10 text-walnut dark:text-stone max-w-3xl">
+          <p className="text-base md:text-lg leading-relaxed">
+            Residential, commercial, and facility management work — every job backed by a{" "}
+            <span className="font-stencil text-rust dark:text-cedar-pale">2-YEAR WARRANTY</span>.
+            Seasonal pricing on decks, concrete, buildings, and paint. Call or text{" "}
+            <span className="font-stencil text-rust dark:text-cedar-pale">502·542·4473</span>{" "}
+            — we&apos;ll figure out the best way to make it happen.
+          </p>
+        </div>
+
+        {/* Services — paper-card grid with workshop ticket vibes */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5">
           {services.map((service, i) => (
-            <FadeUp key={service.num} delay={i * 0.05}>
-              <div className="group flex gap-5 p-6 rounded-xl border border-cedar/10 dark:border-cedar/10 bg-cream/50 dark:bg-charcoal-mid hover:border-cedar/35 hover:bg-cream dark:hover:bg-charcoal-light h-full">
-                <span className="text-xs font-mono text-cedar/40 pt-0.5 shrink-0 w-5">{service.num}</span>
-                <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-charcoal dark:text-cream text-[0.95rem] mb-2 group-hover:text-cedar">
-                    {service.title}
-                  </div>
-                  <div className="text-sm text-walnut dark:text-stone leading-relaxed">
-                    {service.blurb}
-                  </div>
+            <FadeUp key={service.num} delay={i * 0.04}>
+              <div className="group relative bg-cream dark:bg-charcoal-mid border-2 border-charcoal/85 dark:border-cedar/30 p-6 hover:border-rust hover:shadow-[6px_6px_0_0_rgba(20,19,15,0.18)] dark:hover:shadow-[6px_6px_0_0_rgba(184,115,51,0.2)] transition-all">
+                {/* Job-slip header strip */}
+                <div className="flex items-center justify-between -mx-6 -mt-6 mb-5 px-6 py-2 bg-charcoal dark:bg-oil text-cream-dark border-b-2 border-charcoal dark:border-cedar/30">
+                  <span className="font-stamped text-[10px] tracking-[0.25em] uppercase">Service Order</span>
+                  <span className="font-stencil text-cedar text-lg">№ {service.num}</span>
                 </div>
+
+                <h3 className="font-stencil text-2xl text-charcoal dark:text-cream leading-tight mb-3 group-hover:text-rust">
+                  {service.title}
+                </h3>
+
+                <div className="rule-grit text-cedar mb-3" />
+
+                <p className="text-sm text-walnut dark:text-stone leading-relaxed font-sans">
+                  {service.blurb}
+                </p>
               </div>
             </FadeUp>
           ))}

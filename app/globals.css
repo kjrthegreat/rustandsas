@@ -12,12 +12,16 @@
   --color-cedar:         #b87333;
   --color-cedar-light:   #d4894a;
   --color-cedar-pale:    #f2bc82;
+  --color-rust:          #8a3a1f;   /* deeper oxidized rust */
+  --color-rust-dark:     #5e2611;
   --color-walnut:        #5c3d1e;
   --color-charcoal:      #1e1e1c;
   --color-charcoal-mid:  #2a2a27;
   --color-charcoal-light:#363630;
+  --color-oil:           #14130f;   /* darker than charcoal, for stamps */
   --color-cream:         #f5f0e8;
   --color-cream-dark:    #ede5d4;
+  --color-paper:         #ebe0c8;   /* aged paper */
   --color-stone:         #b0a99f;
   --color-iron:          #3d3d3a;
   --color-white-warm:    #fdfaf5;
@@ -115,4 +119,162 @@
   body {
     @apply bg-white-warm dark:bg-charcoal text-charcoal dark:text-cream;
   }
+}
+
+/* ----------------------------------------------------------------------- */
+/* Grit & workshop utilities                                                */
+/* ----------------------------------------------------------------------- */
+
+/* Subtle paper-grain noise applied to the body */
+.paper-grain {
+  position: relative;
+}
+.paper-grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.025;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.07  0 0 0 0 0.04  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+.dark .paper-grain::before {
+  opacity: 0.05;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.88  0 0 0 0 0.75  0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Stencil — chunky cut-out crate-label feel */
+.font-stencil {
+  font-family: var(--font-display), "Anton", "Arial Narrow", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Stamped — typewriter / rubber-stamp accents */
+.font-stamped {
+  font-family: var(--font-stamp), "Courier New", monospace;
+  letter-spacing: 0.05em;
+}
+
+/* Handwritten — sharpie / chalkboard notes */
+.font-hand {
+  font-family: var(--font-hand), "Comic Sans MS", cursive;
+}
+
+/* Stamp box: ink-stamp aesthetic */
+.stamp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem;
+  border: 2.5px solid currentColor;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--font-stamp), monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  filter: contrast(1.05);
+}
+.stamp::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 4px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='1'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -2 1.8'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: lighten;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.stamp-circle {
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+}
+.stamp-rust { color: var(--color-rust); }
+.stamp-charcoal { color: var(--color-charcoal); }
+.dark .stamp-charcoal { color: var(--color-cream); }
+
+/* Slight tilts for nailed-up paper / sticker feel */
+.tilt-l { transform: rotate(-1.4deg); }
+.tilt-r { transform: rotate(1.6deg); }
+.tilt-l-2 { transform: rotate(-2.8deg); }
+.tilt-r-2 { transform: rotate(2.4deg); }
+
+/* Polaroid frame */
+.polaroid {
+  background: var(--color-white-warm);
+  padding: 0.75rem 0.75rem 2.5rem 0.75rem;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.04),
+    0 12px 24px -8px rgba(20,18,12,0.35),
+    0 22px 50px -20px rgba(20,18,12,0.25);
+}
+.dark .polaroid {
+  background: #efe6d2;
+  color: #1e1e1c;
+}
+
+/* Masking tape strip */
+.tape {
+  position: absolute;
+  width: 88px;
+  height: 22px;
+  background: rgba(244,222,170,0.85);
+  border-left: 1px dashed rgba(120,90,40,0.3);
+  border-right: 1px dashed rgba(120,90,40,0.3);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  mix-blend-mode: multiply;
+}
+.dark .tape {
+  background: rgba(220,200,150,0.7);
+  mix-blend-mode: screen;
+}
+
+/* Stenciled crate label — dashed double-rule */
+.crate-rule {
+  border-top: 1px solid currentColor;
+  border-bottom: 3px double currentColor;
+}
+
+/* Job-slip perforated edge */
+.perforated-l {
+  background-image:
+    radial-gradient(circle at 4px 50%, transparent 3.5px, var(--color-paper) 4px);
+  background-size: 16px 16px;
+  background-repeat: repeat-y;
+  background-position: left center;
+  padding-left: 18px;
+}
+.dark .perforated-l {
+  background-image:
+    radial-gradient(circle at 4px 50%, transparent 3.5px, var(--color-charcoal-mid) 4px);
+}
+
+/* Wood-grain ruled lines for section separators */
+.rule-grit {
+  position: relative;
+  height: 12px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 6px,
+      currentColor 6px 8px,
+      transparent 8px 14px
+    );
+  opacity: 0.45;
+}
+
+/* Burst / sunray badge */
+.burst {
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      currentColor 0deg 9deg,
+      transparent 9deg 18deg
+    );
+  border-radius: 999px;
 }
