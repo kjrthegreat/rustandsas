@@ -24,7 +24,7 @@ export default function HeroSection() {
       />
 
       {/* Hero content */}
-      <div className="relative z-10 flex flex-col flex-1 justify-center items-center text-center px-5 sm:px-6 md:px-16 lg:px-24 pt-32 pb-36 sm:pt-40 sm:pb-40 md:pt-44 md:pb-44">
+      <div className="relative z-10 flex flex-col flex-1 justify-center items-center text-center px-5 sm:px-6 md:px-16 lg:px-24 pt-32 pb-48 sm:pt-40 sm:pb-44 md:pt-44 md:pb-44">
         {/* Top eyebrow — stamped */}
         <div className="flex items-center gap-3 mb-6 font-stamped text-cedar-pale text-[11px] tracking-[0.3em] uppercase">
           <span className="block w-8 h-px bg-cedar" />
@@ -60,26 +60,53 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom ribbon — newspaper-style scrolling info */}
+      {/* Bottom ribbon — stat strip; reshapes per breakpoint */}
       <div className="absolute bottom-0 left-0 right-0 z-10 bg-oil border-t-[3px] border-cedar">
-        <div className="flex flex-wrap justify-center md:divide-x md:divide-cedar/30">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
           {[
             { num: "01", label: "Insured" },
             { num: "02", label: "Free Estimates" },
             { num: "03", label: "2-Yr Warranty" },
             { num: "04", label: "Veteran Discount" },
-            { num: "05", label: "502-542-4473" },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="flex items-center justify-center gap-2 py-3 px-3 w-1/2 sm:w-1/3 md:flex-1 md:w-auto"
-            >
-              <span className="font-stencil text-cedar text-lg">{stat.num}</span>
-              <span className="font-stamped text-[10px] tracking-[0.2em] uppercase text-cream-dark whitespace-nowrap">
-                {stat.label}
-              </span>
-            </div>
-          ))}
+            { num: "05", label: "502-542-4473", phone: true },
+          ].map((stat, i) => {
+            const isPhone = i === 4;
+            const classes = [
+              "flex items-center justify-center gap-2 py-3 px-3 whitespace-nowrap",
+              // The phone item: spans 2 cols on mobile (full-width row),
+              // spans 2 of 3 cols on sm (sits next to item 04 in row 2),
+              // back to a single cell on md+
+              isPhone ? "col-span-2 sm:col-span-2 md:col-span-1" : "",
+              // Top divider only on the phone item when it sits in its own mobile row
+              isPhone ? "border-t border-cedar/25 sm:border-t-0" : "",
+              // Vertical dividers only on md+ where everything is in one row
+              i > 0 ? "md:border-l md:border-cedar/25" : "",
+            ].join(" ");
+
+            const inner = (
+              <>
+                <span className="font-stencil text-cedar text-lg">{stat.num}</span>
+                <span className="font-stamped text-[10px] tracking-[0.2em] uppercase text-cream-dark">
+                  {stat.label}
+                </span>
+              </>
+            );
+
+            return isPhone ? (
+              <a
+                key={stat.label}
+                href="tel:5025424473"
+                className={`${classes} hover:bg-cedar/10 transition-colors`}
+                aria-label="Call 502-542-4473"
+              >
+                {inner}
+              </a>
+            ) : (
+              <div key={stat.label} className={classes}>
+                {inner}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

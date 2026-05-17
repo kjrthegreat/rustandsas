@@ -74,22 +74,23 @@ export default function ContactSection() {
             <span className="text-rust dark:text-cedar-pale">your next project?</span>
           </h2>
 
-          {/* Process — checklist, complements the form (no competing black header) */}
-          <div className="relative border-l-[3px] border-rust pl-5 mb-6">
-            <div className="font-stamped text-[11px] tracking-[0.3em] uppercase text-rust dark:text-cedar-pale mb-4">
-              ✚ How it works
+          {/* Process — checklist card with black header */}
+          <div className="relative bg-cream dark:bg-charcoal-mid border-2 border-charcoal/85 dark:border-cedar/30 p-6 mb-6">
+            <div className="flex items-center justify-between -mx-6 -mt-6 mb-4 px-6 py-2 bg-charcoal dark:bg-oil text-cream-dark border-b-2 border-charcoal dark:border-cedar/30">
+              <span className="font-stamped text-[10px] tracking-[0.25em] uppercase">How it works</span>
+              <span className="font-stencil text-cedar text-base">№ 01</span>
             </div>
-            <ol className="space-y-4 text-walnut dark:text-stone text-sm">
-              <li className="flex gap-3 items-baseline">
-                <span className="font-stencil text-rust dark:text-cedar-pale text-2xl leading-none shrink-0 w-7">01</span>
+            <ol className="space-y-3 text-walnut dark:text-stone text-sm">
+              <li className="flex gap-3">
+                <span className="font-stencil text-rust dark:text-cedar-pale text-lg leading-none">01.</span>
                 <span><strong className="text-charcoal dark:text-cream">Text or call</strong> our business number — that&apos;s the fastest way.</span>
               </li>
-              <li className="flex gap-3 items-baseline">
-                <span className="font-stencil text-rust dark:text-cedar-pale text-2xl leading-none shrink-0 w-7">02</span>
+              <li className="flex gap-3">
+                <span className="font-stencil text-rust dark:text-cedar-pale text-lg leading-none">02.</span>
                 <span>If we can&apos;t price it over the phone, we&apos;ll come out for a <strong className="text-charcoal dark:text-cream">free on-site estimate</strong>.</span>
               </li>
-              <li className="flex gap-3 items-baseline">
-                <span className="font-stencil text-rust dark:text-cedar-pale text-2xl leading-none shrink-0 w-7">03</span>
+              <li className="flex gap-3">
+                <span className="font-stencil text-rust dark:text-cedar-pale text-lg leading-none">03.</span>
                 <span>If you like our price, we&apos;ll <strong className="text-charcoal dark:text-cream">get started as soon as you&apos;re ready</strong>.</span>
               </li>
             </ol>
