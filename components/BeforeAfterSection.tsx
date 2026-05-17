@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/AppImage";
 import { Badge } from "@/components/ui/badge";
 import FadeUp from "@/components/FadeUp";
 

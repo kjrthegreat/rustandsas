@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/AppImage";
 import { Check } from "lucide-react";
 import FadeUp from "@/components/FadeUp";
 
