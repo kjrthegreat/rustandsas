@@ -51,7 +51,9 @@ function Stars({ size = "text-base" }: { size?: string }) {
 
 export default function ReviewsSection() {
   return (
-    <section id="reviews" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-charcoal-mid">
+    <section id="reviews" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-charcoal-mid overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: "repeating-linear-gradient(45deg, transparent 0 16px, #5c3d1e 16px 18px)" }} />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(20,19,15,0.06)_100%)]" />
       <div className="relative max-w-6xl mx-auto">
 
         {/* Header */}
@@ -63,20 +65,36 @@ export default function ReviewsSection() {
             <h2 className="font-stencil text-5xl md:text-7xl leading-[0.95] text-charcoal dark:text-cream">
               What folks
               <br />
-              <span className="text-rust dark:text-cedar-pale">are saying.</span>
+              <span className={'shimmer-text-warm'}>are saying.</span>
             </h2>
           </div>
 
           {/* Rating summary block */}
           <div className="flex items-center gap-5 border-t-2 md:border-t-0 md:border-l-2 border-charcoal/30 dark:border-cedar/30 pt-4 md:pt-0 md:pl-5">
             <div>
-              <div className="font-stencil text-5xl sm:text-6xl text-charcoal dark:text-cream leading-none">4.9</div>
+              <div
+                className={'shimmer-text-warm font-stencil text-5xl sm:text-6xl leading-none'}
+                style={{ animation: 'shimmer-sweep 5s linear infinite, rating-breathe 3s ease-in-out infinite' }}
+              >
+                4.9
+              </div>
               <div className="font-stamped text-[10px] tracking-[0.25em] uppercase text-walnut dark:text-stone mt-1">
                 out of 5
               </div>
             </div>
             <div>
-              <Stars size="text-xl" />
+              <div className="flex gap-0.5 text-rust dark:text-cedar-pale" aria-label="5 out of 5 stars">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <span
+                    key={i}
+                    aria-hidden="true"
+                    className="text-2xl leading-none inline-block"
+                    style={{ animation: 'star-wave 3s ease-in-out infinite', animationDelay: `${i * 0.22}s` }}
+                  >
+                    ★
+                  </span>
+                ))}
+              </div>
               <div className="font-stamped text-[10px] tracking-[0.25em] uppercase text-walnut dark:text-stone mt-1">
                 28 verified reviews
                 <br />

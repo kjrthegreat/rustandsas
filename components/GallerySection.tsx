@@ -23,6 +23,7 @@ export default function GallerySection() {
             "repeating-linear-gradient(0deg, transparent 0 36px, rgba(92,61,30,0.5) 36px 37px)",
         }}
       />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(20,19,15,0.07)_100%)]" />
 
       <div className="relative max-w-6xl mx-auto">
 
@@ -34,7 +35,7 @@ export default function GallerySection() {
             <h2 className="font-stencil text-5xl md:text-7xl text-charcoal dark:text-cream leading-[0.9]">
               The projects speak
               <br />
-              <span className="text-rust dark:text-cedar-pale">for themselves.</span>
+              <span className={'shimmer-text-warm'}>for themselves.</span>
             </h2>
           </div>
           <Link

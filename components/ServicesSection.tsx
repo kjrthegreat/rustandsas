@@ -14,6 +14,8 @@ const services = [
 export default function ServicesSection() {
   return (
     <section id="services" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-charcoal overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: "repeating-linear-gradient(45deg, transparent 0 16px, #5c3d1e 16px 18px)" }} />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(20,19,15,0.06)_100%)]" />
       <div className="relative max-w-6xl mx-auto">
 
         {/* Header — newspaper masthead */}
@@ -29,8 +31,8 @@ export default function ServicesSection() {
           <h2 className="font-stencil text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-charcoal dark:text-cream leading-[0.9] mt-4">
             If you can dream it,
           </h2>
-          <h2 className="font-stencil text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-rust dark:text-cedar-pale leading-[0.9] mt-1">
-            we&apos;ll build it.
+          <h2 className={'font-stencil text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.9] mt-1'}>
+            <span className={'shimmer-text-warm'}>we&apos;ll build it.</span>
           </h2>
           <p className="mt-5 font-hand text-2xl text-walnut dark:text-stone tilt-l">
             — no matter what.
@@ -42,7 +44,7 @@ export default function ServicesSection() {
             Residential, commercial, and facility management work — every job backed by a{" "}
             <span className="font-stencil text-rust dark:text-cedar-pale">2-YEAR WARRANTY</span>.
             Seasonal pricing on decks, concrete, buildings, and paint. Call or text{" "}
-            <span className="font-stencil text-rust dark:text-cedar-pale">502·542·4473</span>{" "}
+            <a href="tel:5025424473" className="font-stencil text-rust dark:text-cedar-pale hover:text-cedar transition-colors">502·542·4473</a>{" "}
             — we&apos;ll figure out the best way to make it happen.
           </p>
         </div>

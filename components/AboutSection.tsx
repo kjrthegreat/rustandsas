@@ -44,11 +44,11 @@ export default function AboutSection() {
             ✚ About the shop
           </div>
 
-          <p className="font-stamped text-sm tracking-[0.25em] uppercase text-walnut dark:text-stone mb-3">
-            “In God We Trust”
+          <p className={'breathe-text font-stamped text-sm uppercase text-walnut dark:text-stone mb-3'}>
+            &ldquo;In God We Trust&rdquo;
           </p>
           <h2 className="font-stencil text-5xl md:text-7xl text-charcoal dark:text-cream leading-[0.9] mb-6">
-            We <span className="text-rust dark:text-cedar-pale">build it</span> right.
+            We <span className={'shimmer-text-warm'}>build it</span> right.
           </h2>
 
           <div className="space-y-5 text-walnut dark:text-stone leading-relaxed mb-8 max-w-xl text-base">

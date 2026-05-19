@@ -18,8 +18,10 @@ const cards = [
 
 export default function BeforeAfterSection() {
   return (
-    <section id="ba" className="py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-oil">
-      <div className="max-w-6xl mx-auto">
+    <section id="ba" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-cream-dark dark:bg-oil overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: "repeating-linear-gradient(45deg, transparent 0 16px, #5c3d1e 16px 18px)" }} />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(20,19,15,0.06)_100%)]" />
+      <div className="relative max-w-6xl mx-auto">
 
         <FadeUp className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
@@ -27,7 +29,7 @@ export default function BeforeAfterSection() {
               ✚ Featured Job Cards
             </div>
             <h2 className="font-stencil text-5xl md:text-7xl text-charcoal dark:text-cream leading-[0.9]">
-              Built with <span className="text-rust dark:text-cedar-pale">purpose.</span>
+              Built with <span className={'shimmer-text-warm'}>purpose.</span>
             </h2>
           </div>
           <p className="font-hand text-2xl text-walnut dark:text-stone md:max-w-xs tilt-r">

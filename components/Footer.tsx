@@ -46,14 +46,14 @@ export default function Footer() {
 
       {/* Big stenciled wordmark */}
       <div className="relative max-w-6xl mx-auto px-5 sm:px-6 md:px-16 lg:px-24 pt-10 sm:pt-12 md:pt-14 pb-8 md:pb-10 text-center">
-        <div className="font-stencil text-5xl md:text-7xl lg:text-8xl text-cream leading-none tracking-wide">
-          RUST<span className="text-rust">&amp;</span>SAWDUST
+        <div className={'font-stencil text-5xl md:text-7xl lg:text-8xl leading-none tracking-wide'}>
+          <span className={'shimmer-text'}>RUST</span><span className={'text-rust'}>&amp;</span><span className={'shimmer-text'}>SAWDUST</span>
         </div>
-        <div className="font-stamped text-[11px] md:text-sm tracking-[0.3em] uppercase text-cedar-pale mt-5">
+        <div className={'breathe-text font-stamped text-[11px] md:text-sm uppercase text-cedar-pale mt-5'}>
           ★ Somerset, Kentucky · Lake Cumberland Region ★
         </div>
-        <div className="font-hand text-2xl md:text-3xl text-cream-dark/90 mt-2">
-          “In God We Trust.”
+        <div className={'font-hand text-2xl md:text-3xl mt-2'}>
+          <span className={'shimmer-text'}>&ldquo;In God We Trust.&rdquo;</span>
         </div>
       </div>
 
@@ -84,7 +84,7 @@ export default function Footer() {
             ))}
           </div>
           <div className="font-stamped text-[11px] tracking-[0.2em] uppercase text-cream-dark text-center md:text-right">
-            <span className="text-cedar-pale">502 · 542 · 4473</span>
+            <a href="tel:5025424473" className="text-cedar-pale hover:text-cream transition-colors">502 · 542 · 4473</a>
             <span className="mx-3 text-cedar/40">|</span>
             <span>Call · Text · DM</span>
           </div>

@@ -26,16 +26,19 @@ export default function HeroSection() {
       {/* Hero content */}
       <div className="relative z-10 flex flex-col flex-1 justify-center items-center text-center px-5 sm:px-6 md:px-16 lg:px-24 pt-32 pb-32 sm:pt-40 sm:pb-36 md:pt-44 md:pb-44">
         {/* Top eyebrow — stamped */}
-        <div className="flex items-center gap-3 mb-6 font-stamped text-cedar-pale text-[11px] tracking-[0.3em] uppercase">
-          <span className="block w-8 h-px bg-cedar" />
-          <span>Somerset, Kentucky · In God We Trust</span>
-          <span className="block w-8 h-px bg-cedar" />
+        <div className="flex flex-col items-center gap-2 mb-7">
+          <span className="breathe-text font-stamped text-[9px] uppercase text-stone">
+            Somerset, Kentucky
+          </span>
+          <span className="shimmer-text shimmer-underline font-stamped text-[12px] sm:text-[13px] tracking-[0.28em] uppercase">
+            In God We Trust
+          </span>
         </div>
 
-        <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-cream leading-tight mb-7 max-w-4xl">
-          Custom building.
+        <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight mb-7 max-w-4xl">
+          <span className="shimmer-text">Custom building.</span>
           <br />
-          <em className="font-normal text-cedar-pale">Crafted right.</em>
+          <em className="font-normal shimmer-text">Crafted right.</em>
         </h1>
 
         <p className="text-stone text-base md:text-lg max-w-2xl leading-relaxed mb-10">
@@ -55,7 +58,7 @@ export default function HeroSection() {
             href="#work"
             className="inline-flex items-center justify-center font-stencil text-base tracking-widest uppercase text-cream-dark px-8 h-12 border-2 border-cream/40 hover:border-cedar hover:text-cedar-pale"
           >
-            See Our Work →
+            See Our Work <span className="ml-1 leading-none">→</span>
           </Link>
         </div>
       </div>

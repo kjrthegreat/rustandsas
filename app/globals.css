@@ -268,6 +268,96 @@
   opacity: 0.45;
 }
 
+/* Star wave — sequential light-up cascade */
+@keyframes star-wave {
+  0%, 55%, 100% { opacity: 0.3;  transform: scale(1);    filter: none; }
+  27%            { opacity: 1;    transform: scale(1.35); filter: drop-shadow(0 0 6px currentColor); }
+}
+
+/* Rating number breathe — scales up in sync with star wave */
+@keyframes rating-breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.08); }
+}
+
+/* Warm shimmer for light backgrounds (rust → cedar-light → rust) */
+.shimmer-text-warm {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-rust)        25%,
+    var(--color-cedar-light) 50%,
+    var(--color-rust)        75%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 5s linear infinite;
+}
+.dark .shimmer-text-warm {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-cedar-pale) 25%,
+    var(--color-cream)      50%,
+    var(--color-cedar-pale) 75%
+  );
+}
+
+/* Shimmer sweep — light catching wood grain */
+@keyframes shimmer-sweep {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes letter-breathe {
+  0%, 100% { letter-spacing: 0.4em;  opacity: 0.55; }
+  50%       { letter-spacing: 0.55em; opacity: 0.85; }
+}
+.breathe-text {
+  animation: letter-breathe 7s ease-in-out infinite;
+}
+
+@keyframes underline-expand {
+  0%, 100% { width: 0%;   opacity: 0; }
+  25%, 75%  { width: 100%; opacity: 1; }
+}
+.shimmer-text {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  background: linear-gradient(
+    90deg,
+    var(--color-cedar-pale) 25%,
+    var(--color-cream)      50%,
+    var(--color-cedar-pale) 75%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 5s linear infinite;
+}
+.shimmer-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-cedar-pale),
+    var(--color-cream),
+    var(--color-cedar-pale),
+    transparent
+  );
+  animation: underline-expand 5s ease-in-out infinite;
+}
+
 /* Burst / sunray badge */
 .burst {
   background:

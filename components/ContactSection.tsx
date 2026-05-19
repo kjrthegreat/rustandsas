@@ -62,16 +62,23 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="relative py-16 sm:py-20 md:py-24 px-5 sm:px-6 md:px-16 lg:px-24 bg-paper dark:bg-charcoal overflow-hidden">
+      {/* Diagonal grain stripes */}
+      <div
+        className="absolute inset-0 opacity-[0.045] pointer-events-none"
+        style={{ backgroundImage: "repeating-linear-gradient(45deg, transparent 0 16px, #5c3d1e 16px 18px)" }}
+      />
+      {/* Edge vignette */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(20,19,15,0.07)_100%)]" />
       <div className="relative max-w-6xl mx-auto grid lg:grid-cols-[5fr_6fr] gap-10 lg:gap-12 items-start">
 
         <FadeUp>
           <div className="font-stamped text-[11px] tracking-[0.3em] uppercase text-rust dark:text-cedar-pale mb-3">
             ✚ Get in touch
           </div>
-          <h2 className="font-stencil text-5xl md:text-7xl leading-[0.95] mb-6 text-charcoal dark:text-cream">
-            Ready to start
+          <h2 className="font-stencil text-5xl md:text-7xl leading-[0.95] mb-6">
+            <span className="shimmer-text-warm">Ready to start</span>
             <br />
-            <span className="text-rust dark:text-cedar-pale">your next project?</span>
+            <span className="shimmer-text-warm">your next project?</span>
           </h2>
 
           {/* Process — checklist card with black header */}
@@ -109,7 +116,7 @@ export default function ContactSection() {
           <div className="space-y-3 font-stamped text-sm border-t-2 border-double border-charcoal/40 dark:border-cedar/30 pt-5">
             <div className="flex items-baseline gap-3">
               <span className="text-[10px] uppercase tracking-[0.25em] text-walnut dark:text-stone w-16 shrink-0">Phone</span>
-              <span className="font-stencil text-2xl text-charcoal dark:text-cream">502 · 542 · 4473</span>
+              <a href="tel:5025424473" className="font-stencil text-2xl text-charcoal dark:text-cream hover:text-rust dark:hover:text-cedar-pale transition-colors">502 · 542 · 4473</a>
             </div>
             <div className="flex items-baseline gap-3">
               <span className="text-[10px] uppercase tracking-[0.25em] text-walnut dark:text-stone w-16 shrink-0">Email</span>
