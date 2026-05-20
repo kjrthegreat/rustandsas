@@ -104,7 +104,7 @@ export default function ReviewsSection() {
           </div>
         </FadeUp>
 
-        {/* Review cards — 3 across desktop, last 2 centered */}
+        {/* Review cards - 3 across desktop, last 2 centered */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {reviews.map((r) => (
             <FadeUp key={r.no} delay={parseInt(r.no) * 0.05}>
@@ -132,7 +132,7 @@ export default function ReviewsSection() {
                   <footer className="font-stamped text-[11px] tracking-wide text-charcoal dark:text-cream flex items-baseline justify-between gap-3 mt-auto">
                     <div>
                       <div className="font-stencil text-base tracking-wide leading-tight">
-                        — {r.name}
+                        - {r.name}
                       </div>
                       <div className="text-walnut dark:text-stone text-[10px] tracking-[0.2em] uppercase mt-0.5">
                         {r.service}
@@ -151,7 +151,7 @@ export default function ReviewsSection() {
         {/* Thumbtack plug */}
         <FadeUp delay={0.3} className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5 text-center">
           <p className="font-hand text-2xl text-walnut dark:text-stone">
-            read every word — straight from the source:
+            read every word - straight from the source:
           </p>
           <a
             href={THUMBTACK_URL}

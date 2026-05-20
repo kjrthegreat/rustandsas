@@ -3,7 +3,7 @@ import FadeUp from "@/components/FadeUp";
 const services = [
   { num: "01", title: "Decks, Porches & Patio Covers", blurb: "Covered porches, open decks, awnings, and overhangs. Cedar & treated lumber. Seasonal pricing." },
   { num: "02", title: "Screened Rooms & Pergolas",      blurb: "Screened porches, pergolas, and outdoor living rooms. Built for lake-house life." },
-  { num: "03", title: "Buildings, Barns & Sheds",       blurb: "Post-frame pole barns, garages, sheds, custom outbuildings — finished to match your home." },
+  { num: "03", title: "Buildings, Barns & Sheds",       blurb: "Post-frame pole barns, garages, sheds, custom outbuildings - finished to match your home." },
   { num: "04", title: "Concrete & Excavating",          blurb: "Driveways, patios, flatwork, site prep & excavating. Stained or standard." },
   { num: "05", title: "Custom Woodwork",                blurb: "Live-edge counters, pipe shelving, bars, one-of-a-kind interior builds. Dream it, we build it." },
   { num: "06", title: "Home Add-Ons & Remodels",        blurb: "Additions, bathrooms, kitchens, full renos. Residential and commercial work." },
@@ -18,7 +18,7 @@ export default function ServicesSection() {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(20,19,15,0.06)_100%)]" />
       <div className="relative max-w-6xl mx-auto">
 
-        {/* Header — newspaper masthead */}
+        {/* Header - newspaper masthead */}
         <FadeUp className="mb-14 border-y-[3px] border-double border-charcoal dark:border-cedar/50 py-6">
           <div className="flex items-baseline justify-between gap-6 flex-wrap">
             <div className="font-stamped text-[10px] tracking-[0.3em] uppercase text-rust dark:text-cedar-pale">
@@ -35,21 +35,21 @@ export default function ServicesSection() {
             <span className={'shimmer-text-warm'}>we&apos;ll build it.</span>
           </h2>
           <p className="mt-5 font-hand text-2xl text-walnut dark:text-stone tilt-l">
-            — no matter what.
+            - no matter what.
           </p>
         </FadeUp>
 
         <div className="mt-6 mb-10 text-walnut dark:text-stone max-w-3xl">
           <p className="text-base md:text-lg leading-relaxed">
-            Residential, commercial, and facility management work — every job backed by a{" "}
+            Residential, commercial, and facility management work - every job backed by a{" "}
             <span className="font-stencil text-rust dark:text-cedar-pale">2-YEAR WARRANTY</span>.
             Seasonal pricing on decks, concrete, buildings, and paint. Call or text{" "}
             <a href="tel:5025424473" className="font-stencil text-rust dark:text-cedar-pale hover:text-cedar transition-colors">502·542·4473</a>{" "}
-            — we&apos;ll figure out the best way to make it happen.
+            - we&apos;ll figure out the best way to make it happen.
           </p>
         </div>
 
-        {/* Services — paper-card grid with workshop ticket vibes */}
+        {/* Services - paper-card grid with workshop ticket vibes */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5">
           {services.map((service, i) => (
             <FadeUp key={service.num} delay={i * 0.04}>

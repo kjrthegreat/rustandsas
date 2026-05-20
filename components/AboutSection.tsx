@@ -22,7 +22,7 @@ export default function AboutSection() {
               <div className="relative aspect-[4/5] overflow-hidden bg-cream-dark">
                 <Image
                   src="/images/nd.png"
-                  alt="Rust & Sawdust — porch build in progress"
+                  alt="Rust & Sawdust - porch build in progress"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -55,7 +55,7 @@ export default function AboutSection() {
             <p>
               I grew up in Indiana farm country, and my first taste of this work came in my{" "}
               <span className="font-hand text-2xl text-charcoal dark:text-cream-dark italic">grandfather&apos;s shop</span>
-              {" "}— watching and helping him custom-build anything a project called for,
+              {" "}- watching and helping him custom-build anything a project called for,
               including the home he built himself. He&apos;s been my mentor my whole life and still is today.
             </p>
             <p>
@@ -66,8 +66,8 @@ export default function AboutSection() {
             </p>
             <p>
               Today, Rust &amp; Sawdust handles residential, commercial, and facility management work
-              across the Lake Cumberland region. We specialize in custom builds — if you can dream
-              it, we can build it — and every job comes with a{" "}
+              across the Lake Cumberland region. We specialize in custom builds - if you can dream
+              it, we can build it - and every job comes with a{" "}
               <span className="font-stencil text-rust dark:text-cedar-pale">2-year warranty</span>.
               Insured, experienced, safe, and respectful, with discounts for U.S. Veterans and
               first-time customers as our way of saying thanks.
@@ -82,7 +82,7 @@ export default function AboutSection() {
               it&apos;s simply not done.
             </p>
             <span className="font-stamped text-[10px] tracking-[0.25em] uppercase text-walnut dark:text-stone mt-2 inline-block">
-              — house rule
+              - house rule
             </span>
           </div>
 

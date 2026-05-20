@@ -81,7 +81,7 @@ export default function ContactSection() {
             <span className="shimmer-text-warm">your next project?</span>
           </h2>
 
-          {/* Process — checklist card with black header */}
+          {/* Process - checklist card with black header */}
           <div className="relative bg-cream dark:bg-charcoal-mid border-2 border-charcoal/85 dark:border-cedar/30 p-6 mb-6">
             <div className="flex items-center justify-between -mx-6 -mt-6 mb-4 px-6 py-2 bg-charcoal dark:bg-oil text-cream-dark border-b-2 border-charcoal dark:border-cedar/30">
               <span className="font-stamped text-[10px] tracking-[0.25em] uppercase">How it works</span>
@@ -94,7 +94,7 @@ export default function ContactSection() {
               </li>
               <li className="flex gap-3">
                 <span className="font-stencil text-rust dark:text-cedar-pale text-lg leading-none">02.</span>
-                <span>We&apos;ll respond fast with a price — or come out for a <strong className="text-charcoal dark:text-cream">free on-site estimate</strong>.</span>
+                <span>We&apos;ll respond fast with a price - or come out for a <strong className="text-charcoal dark:text-cream">free on-site estimate</strong>.</span>
               </li>
               <li className="flex gap-3">
                 <span className="font-stencil text-rust dark:text-cedar-pale text-lg leading-none">03.</span>
@@ -112,7 +112,7 @@ export default function ContactSection() {
             </p>
           </div>
 
-          {/* Contact rows — workbook style */}
+          {/* Contact rows - workbook style */}
           <div className="space-y-3 font-stamped text-sm border-t-2 border-double border-charcoal/40 dark:border-cedar/30 pt-5">
             <div className="flex items-baseline gap-3">
               <span className="text-[10px] uppercase tracking-[0.25em] text-walnut dark:text-stone w-16 shrink-0">Phone</span>
@@ -166,7 +166,7 @@ export default function ContactSection() {
                 <div className="text-center py-12">
                   <div className="font-stencil text-5xl text-rust dark:text-cedar-pale mb-3">ORDER RECEIVED</div>
                   <p className="font-hand text-2xl text-walnut dark:text-stone tilt-l">
-                    thanks — we&apos;ll be in touch.
+                    thanks - we&apos;ll be in touch.
                   </p>
                   <p className="text-walnut dark:text-stone text-sm mt-4 font-stamped tracking-wide">
                     We&apos;ll review your project and get back to you with a free estimate.
@@ -208,7 +208,7 @@ export default function ContactSection() {
                   <div className="space-y-1.5">
                     <Label className="font-stamped text-[10px] tracking-[0.2em] uppercase text-walnut dark:text-stone">Project Description</Label>
                     <Textarea
-                      placeholder="Tell us about your project — size, timeline, any details that help us give you an accurate quote..."
+                      placeholder="Tell us about your project - size, timeline, any details that help us give you an accurate quote..."
                       rows={4}
                       required
                       className="bg-paper dark:bg-charcoal border-2 border-charcoal/30 dark:border-cedar/30 text-charcoal dark:text-cream placeholder:text-walnut/40 focus-visible:ring-rust focus-visible:border-rust rounded-none font-stamped resize-none"

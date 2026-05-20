@@ -35,9 +35,9 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Rust & Sawdust — Home Improvements | Somerset, KY",
+  title: "Rust & Sawdust - Home Improvements | Somerset, KY",
   description:
-    "Custom building, crafting & design. Decks, porches, barns, remodels, concrete, and custom woodwork — built by an insured, experienced crew serving the Lake Cumberland region.",
+    "Custom building, crafting & design. Decks, porches, barns, remodels, concrete, and custom woodwork - built by an insured, experienced crew serving the Lake Cumberland region.",
 };
 
 export default function RootLayout({

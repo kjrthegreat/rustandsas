@@ -4,10 +4,10 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-oil">
-      {/* Background — zoomed in on porch structure, sky cropped out */}
+      {/* Background - zoomed in on porch structure, sky cropped out */}
       <Image
         src="/images/ep.png"
-        alt="Rust & Sawdust — barn build"
+        alt="Rust & Sawdust - barn build"
         fill
         priority
         className="object-cover object-[center_55%] opacity-80"
@@ -25,7 +25,7 @@ export default function HeroSection() {
 
       {/* Hero content */}
       <div className="relative z-10 flex flex-col flex-1 justify-center items-center text-center px-5 sm:px-6 md:px-16 lg:px-24 pt-32 pb-32 sm:pt-40 sm:pb-36 md:pt-44 md:pb-44">
-        {/* Top eyebrow — stamped */}
+        {/* Top eyebrow - stamped */}
         <div className="flex flex-col items-center gap-2 mb-7">
           <span className="breathe-text font-stamped text-[9px] uppercase text-stone">
             Somerset, Kentucky
@@ -42,7 +42,7 @@ export default function HeroSection() {
         </h1>
 
         <p className="text-stone text-base md:text-lg max-w-2xl leading-relaxed mb-10">
-          Decks, porches, barns, remodels, concrete, and custom woodwork —
+          Decks, porches, barns, remodels, concrete, and custom woodwork -
           built by an insured, experienced crew serving the Lake Cumberland
           region. Call or text for a free quote today.
         </p>
@@ -63,7 +63,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom ribbon — 3+2 layout on mobile/tablet, single row on desktop */}
+      {/* Bottom ribbon - 3+2 layout on mobile/tablet, single row on desktop */}
       <div className="absolute bottom-0 left-0 right-0 z-10 bg-oil border-t-[3px] border-cedar">
         <div className="grid grid-cols-6 md:grid-cols-5 md:divide-x md:divide-cedar/25 items-center">
           {[
@@ -76,7 +76,7 @@ export default function HeroSection() {
             const isPhone = i === 4;
             // Mobile/tablet grid-cols-6: items 1-3 each col-span-2 fill row 1.
             // Item 4 col-start-2 col-span-2 sits at cols 2-3 of row 2; item 5 col-span-2
-            // sits at cols 4-5 — leaves cols 1 & 6 empty so the pair centers.
+            // sits at cols 4-5 - leaves cols 1 & 6 empty so the pair centers.
             // On md+ everything reverts to one cell each.
             const colClasses =
               i < 3

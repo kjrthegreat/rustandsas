@@ -6,13 +6,13 @@ const cards = [
     no: "042",
     src: "/images/489956216_1114534607358256_9119355287785532819_n.jpg",
     project: "Custom Bar & Pipe Shelving",
-    detail: "Live-edge walnut countertop with a custom sink cutout, black pipe shelving wall, and shiplap base — a complete bar room transformation.",
+    detail: "Live-edge walnut countertop with a custom sink cutout, black pipe shelving wall, and shiplap base - a complete bar room transformation.",
   },
   {
     no: "067",
     src: "/images/670497905_18106916803888879_7349982229797857235_n.jpg",
     project: "Lakeside Storage Rack",
-    detail: "Cedar storage rack at the water's edge, housing kayaks and life vests — clean, functional, built for lake living.",
+    detail: "Cedar storage rack at the water's edge, housing kayaks and life vests - clean, functional, built for lake living.",
   },
 ];
 

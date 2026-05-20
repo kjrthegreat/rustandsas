@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Double-rule divider — equal thirds so the 3 blocks line up evenly */}
+      {/* Double-rule divider - equal thirds so the 3 blocks line up evenly */}
       <div className="relative max-w-6xl mx-auto px-5 sm:px-6 md:px-16 lg:px-24">
         <div className="border-y-[3px] border-double border-cedar/40 py-6 grid grid-cols-1 md:grid-cols-3 items-center gap-y-4 gap-x-6">
           <ul className="flex flex-wrap gap-x-5 gap-y-2 list-none justify-center md:justify-start">
