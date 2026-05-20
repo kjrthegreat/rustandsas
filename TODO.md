@@ -16,3 +16,10 @@
 
 ## Completed
 - [x] Remove all em dashes from source files
+- [x] SEO foundation — expanded metadata, Open Graph, Twitter cards, canonical URL (rustandsawdustky.com)
+- [x] JSON-LD `GeneralContractor` schema with address, phone, service area, and social links
+- [x] `sitemap.xml` + `robots.txt` auto-generated at build time
+- [x] 8 keyword-targeted service pages under `/services/[slug]`
+- [x] Service cards on homepage linked to service pages ("Learn More →")
+- [x] Deployed to Cloudflare Pages — https://rustandsas.pages.dev
+- [x] GitHub repo moved to `kjrthegreat/rustandsas` as primary
