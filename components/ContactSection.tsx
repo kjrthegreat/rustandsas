@@ -34,6 +34,9 @@ const services = [
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [service, setService] = useState("");
   const [images, setImages] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -55,9 +58,57 @@ export default function ContactSection() {
     handleFiles(e.dataTransfer.files);
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function compressImage(file: File): Promise<{ name: string; base64: string }> {
+    return new Promise((resolve) => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        URL.revokeObjectURL(url);
+        const MAX = 1200;
+        const scale = Math.min(1, MAX / Math.max(img.width, img.height));
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        canvas.getContext("2d")!.drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve({
+          name: file.name.replace(/\.[^.]+$/, ".jpg"),
+          base64: canvas.toDataURL("image/jpeg", 0.82).split(",")[1],
+        });
+      };
+      img.src = url;
+    });
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const fd = new FormData(e.currentTarget);
+    const compressed = await Promise.all(images.map(compressImage));
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: fd.get("firstName"),
+          lastName: fd.get("lastName"),
+          phone: fd.get("phone"),
+          email: fd.get("email"),
+          service,
+          description: fd.get("description"),
+          images: compressed,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Submit failed");
+      setSubmitted(true);
+    } catch {
+      setSubmitError("Something went wrong. Please try calling us at 502·542·4473.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -175,24 +226,24 @@ export default function ContactSection() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-2 gap-4">
-                    {[{ label: "First Name", placeholder: "John" }, { label: "Last Name", placeholder: "Smith" }].map((f) => (
+                    {[{ label: "First Name", name: "firstName", placeholder: "John" }, { label: "Last Name", name: "lastName", placeholder: "Smith" }].map((f) => (
                       <div key={f.label} className="space-y-1.5">
                         <Label className="font-stamped text-[10px] tracking-[0.2em] uppercase text-walnut dark:text-stone">{f.label}</Label>
-                        <Input placeholder={f.placeholder} required className="bg-paper dark:bg-charcoal border-2 border-charcoal/30 dark:border-cedar/30 text-charcoal dark:text-cream placeholder:text-walnut/40 focus-visible:ring-rust focus-visible:border-rust rounded-none font-stamped" />
+                        <Input name={f.name} placeholder={f.placeholder} required className="bg-paper dark:bg-charcoal border-2 border-charcoal/30 dark:border-cedar/30 text-charcoal dark:text-cream placeholder:text-walnut/40 focus-visible:ring-rust focus-visible:border-rust rounded-none font-stamped" />
                       </div>
                     ))}
                   </div>
                   <div className="space-y-1.5">
                     <Label className="font-stamped text-[10px] tracking-[0.2em] uppercase text-walnut dark:text-stone">Phone Number</Label>
-                    <Input type="tel" placeholder="(606) 555-0000" required className="bg-paper dark:bg-charcoal border-2 border-charcoal/30 dark:border-cedar/30 text-charcoal dark:text-cream placeholder:text-walnut/40 focus-visible:ring-rust focus-visible:border-rust rounded-none font-stamped" />
+                    <Input type="tel" name="phone" placeholder="(606) 555-0000" required className="bg-paper dark:bg-charcoal border-2 border-charcoal/30 dark:border-cedar/30 text-charcoal dark:text-cream placeholder:text-walnut/40 focus-visible:ring-rust focus-visible:border-rust rounded-none font-stamped" />
                   </div>
                   <div className="space-y-1.5">
                     <Label className="font-stamped text-[10px] tracking-[0.2em] uppercase text-walnut dark:text-stone">Email Address</Label>
-                    <Input type="email" placeholder="you@example.com" required className="bg-paper dark:bg-charcoal border-2 border-charcoal/30 dark:border-cedar/30 text-charcoal dark:text-cream placeholder:text-walnut/40 focus-visible:ring-rust focus-visible:border-rust rounded-none font-stamped" />
+                    <Input type="email" name="email" placeholder="you@example.com" required className="bg-paper dark:bg-charcoal border-2 border-charcoal/30 dark:border-cedar/30 text-charcoal dark:text-cream placeholder:text-walnut/40 focus-visible:ring-rust focus-visible:border-rust rounded-none font-stamped" />
                   </div>
                   <div className="space-y-1.5">
                     <Label className="font-stamped text-[10px] tracking-[0.2em] uppercase text-walnut dark:text-stone">Service Needed</Label>
-                    <Select>
+                    <Select value={service} onValueChange={(v) => setService(v ?? "")}>
                       <SelectTrigger className="w-full bg-paper dark:bg-charcoal border-2 border-charcoal/30 dark:border-cedar/30 text-charcoal dark:text-cream focus:ring-rust rounded-none font-stamped">
                         <SelectValue placeholder="Select a service..." />
                       </SelectTrigger>
@@ -208,6 +259,7 @@ export default function ContactSection() {
                   <div className="space-y-1.5">
                     <Label className="font-stamped text-[10px] tracking-[0.2em] uppercase text-walnut dark:text-stone">Project Description</Label>
                     <Textarea
+                      name="description"
                       placeholder="Tell us about your project - size, timeline, any details that help us give you an accurate quote..."
                       rows={4}
                       required
@@ -268,12 +320,19 @@ export default function ContactSection() {
                     )}
                   </div>
 
+                  {submitError && (
+                    <p className="font-stamped text-[11px] tracking-wide text-rust dark:text-cedar-pale border border-rust/40 px-4 py-3">
+                      {submitError}
+                    </p>
+                  )}
+
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full inline-flex items-center justify-center bg-rust hover:bg-cedar text-white-warm font-stencil text-lg tracking-widest uppercase h-12 border-2 border-charcoal shadow-[4px_4px_0_0_rgba(20,19,15,0.45)] hover:shadow-[2px_2px_0_0_rgba(20,19,15,0.45)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                      disabled={submitting}
+                      className="w-full inline-flex items-center justify-center bg-rust hover:bg-cedar disabled:opacity-60 disabled:cursor-not-allowed text-white-warm font-stencil text-lg tracking-widest uppercase h-12 border-2 border-charcoal shadow-[4px_4px_0_0_rgba(20,19,15,0.45)] hover:shadow-[2px_2px_0_0_rgba(20,19,15,0.45)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                     >
-                      Submit Job Order →
+                      {submitting ? "Sending..." : "Submit Job Order →"}
                     </button>
                   </div>
 
