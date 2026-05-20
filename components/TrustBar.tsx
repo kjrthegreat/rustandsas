@@ -1,11 +1,11 @@
 const items = [
-  "Insured",
-  "Free Estimates",
-  "2-Yr Warranty Included",
-  "Veteran Discount",
-  "First-Timer Discount",
-  "Custom Building",
   "Residential · Commercial · Facility Mgmt",
+  "Custom Builds & Woodwork",
+  "Decks · Porches · Barns · Concrete",
+  "First-Timer Discount",
+  "Lake Cumberland Region",
+  "Licensed & Insured",
+  "2-Year Warranty on Every Job",
 ];
 
 export default function TrustBar() {
