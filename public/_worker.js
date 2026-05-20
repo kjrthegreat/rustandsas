@@ -1,7 +1,3 @@
-const RECIPIENT_EMAIL = "rustandsawdustky@gmail.com";
-const SENDER_EMAIL = "contact@rustandsawdustky.com";
-const SENDER_NAME = "Rust & Sawdust Website";
-
 export default {
   async fetch(request, env) {
     if (request.method === "OPTIONS") {
@@ -32,80 +28,42 @@ async function handleContact(request, env) {
     return cors({ error: "Missing required fields" }, 400);
   }
 
-  const html = `
-    <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
-      <h2 style="background:#14130f;color:#f5f0e8;padding:16px 20px;margin:0;letter-spacing:0.1em;">
-        NEW QUOTE REQUEST
-      </h2>
-      <table style="width:100%;border-collapse:collapse;font-size:15px;">
-        <tr style="border-bottom:1px solid #e8e0d0;">
-          <td style="padding:12px 16px;color:#888;width:110px;">Name</td>
-          <td style="padding:12px 16px;"><strong>${esc(firstName)} ${esc(lastName)}</strong></td>
-        </tr>
-        <tr style="border-bottom:1px solid #e8e0d0;">
-          <td style="padding:12px 16px;color:#888;">Phone</td>
-          <td style="padding:12px 16px;"><a href="tel:${esc(phone)}" style="color:#b84a1a;">${esc(phone)}</a></td>
-        </tr>
-        <tr style="border-bottom:1px solid #e8e0d0;">
-          <td style="padding:12px 16px;color:#888;">Email</td>
-          <td style="padding:12px 16px;"><a href="mailto:${esc(email)}" style="color:#b84a1a;">${esc(email)}</a></td>
-        </tr>
-        <tr style="border-bottom:1px solid #e8e0d0;">
-          <td style="padding:12px 16px;color:#888;">Service</td>
-          <td style="padding:12px 16px;">${esc(service || "Not specified")}</td>
-        </tr>
-        <tr>
-          <td style="padding:12px 16px;color:#888;vertical-align:top;">Project</td>
-          <td style="padding:12px 16px;line-height:1.6;">${esc(description).replace(/\n/g, "<br>")}</td>
-        </tr>
-      </table>
-      ${images.length > 0
-        ? `<p style="padding:12px 16px;color:#888;font-size:13px;border-top:1px solid #e8e0d0;">
-             ${images.length} photo${images.length > 1 ? "s" : ""} attached.
-           </p>`
-        : ""}
-    </div>
-  `;
-
-  const payload = {
-    sender: { name: SENDER_NAME, email: SENDER_EMAIL },
-    to: [{ email: RECIPIENT_EMAIL, name: "Rust & Sawdust" }],
-    replyTo: { email, name: `${firstName} ${lastName}` },
-    subject: `Quote Request — ${service || "General"} — ${firstName} ${lastName}`,
-    htmlContent: html,
-  };
+  const lines = [
+    `Name: ${firstName} ${lastName}`,
+    `Phone: ${phone}`,
+    `Email: ${email}`,
+    `Service: ${service || "Not specified"}`,
+    ``,
+    `Project Description:`,
+    description,
+  ];
 
   if (images.length > 0) {
-    payload.attachment = images.map((img) => ({
-      name: img.name,
-      content: img.base64,
-    }));
+    lines.push(``, `${images.length} photo${images.length > 1 ? "s" : ""} submitted — reply to this email to request them.`);
   }
 
-  const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {
+  const payload = {
+    access_key: env.WEB3FORMS_KEY,
+    subject: `Quote Request — ${service || "General"} — ${firstName} ${lastName}`,
+    from_name: `${firstName} ${lastName} via Rust & Sawdust`,
+    replyto: email,
+    message: lines.join("\n"),
+  };
+
+  const w3Res = await fetch("https://api.web3forms.com/submit", {
     method: "POST",
-    headers: {
-      "api-key": env.BREVO_API_KEY,
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
 
-  if (!brevoRes.ok) {
-    const errText = await brevoRes.text();
-    console.error("Brevo error:", errText);
+  const result = await w3Res.json().catch(() => ({}));
+
+  if (!w3Res.ok || !result.success) {
+    console.error("Web3Forms error:", result);
     return cors({ error: "Failed to send email" }, 502);
   }
 
   return cors({ success: true }, 200);
-}
-
-function esc(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }
 
 function cors(body, status) {
