@@ -1,14 +1,15 @@
 import FadeUp from "@/components/FadeUp";
+import Link from "next/link";
 
 const services = [
-  { num: "01", title: "Decks, Porches & Patio Covers", blurb: "Covered porches, open decks, awnings, and overhangs. Cedar & treated lumber. Seasonal pricing." },
-  { num: "02", title: "Screened Rooms & Pergolas",      blurb: "Screened porches, pergolas, and outdoor living rooms. Built for lake-house life." },
-  { num: "03", title: "Buildings, Barns & Sheds",       blurb: "Post-frame pole barns, garages, sheds, custom outbuildings - finished to match your home." },
-  { num: "04", title: "Concrete & Excavating",          blurb: "Driveways, patios, flatwork, site prep & excavating. Stained or standard." },
-  { num: "05", title: "Custom Woodwork",                blurb: "Live-edge counters, pipe shelving, bars, one-of-a-kind interior builds. Dream it, we build it." },
-  { num: "06", title: "Home Add-Ons & Remodels",        blurb: "Additions, bathrooms, kitchens, full renos. Residential and commercial work." },
-  { num: "07", title: "Windows, Trim & Painting",       blurb: "Window install, interior trim, finish carpentry, and interior/exterior paint." },
-  { num: "08", title: "Golf Greens & Specialty",        blurb: "Backyard golf greens and one-off custom projects. No job too big or small." },
+  { num: "01", slug: "decks-porches",           title: "Decks, Porches & Patio Covers", blurb: "Covered porches, open decks, awnings, and overhangs. Cedar & treated lumber. Seasonal pricing." },
+  { num: "02", slug: "screened-rooms-pergolas", title: "Screened Rooms & Pergolas",      blurb: "Screened porches, pergolas, and outdoor living rooms. Built for lake-house life." },
+  { num: "03", slug: "buildings-barns-sheds",   title: "Buildings, Barns & Sheds",       blurb: "Post-frame pole barns, garages, sheds, custom outbuildings - finished to match your home." },
+  { num: "04", slug: "concrete-excavating",     title: "Concrete & Excavating",          blurb: "Driveways, patios, flatwork, site prep & excavating. Stained or standard." },
+  { num: "05", slug: "custom-woodwork",         title: "Custom Woodwork",                blurb: "Live-edge counters, pipe shelving, bars, one-of-a-kind interior builds. Dream it, we build it." },
+  { num: "06", slug: "additions-remodels",      title: "Home Add-Ons & Remodels",        blurb: "Additions, bathrooms, kitchens, full renos. Residential and commercial work." },
+  { num: "07", slug: "windows-trim-painting",   title: "Windows, Trim & Painting",       blurb: "Window install, interior trim, finish carpentry, and interior/exterior paint." },
+  { num: "08", slug: "golf-greens-specialty",   title: "Golf Greens & Specialty",        blurb: "Backyard golf greens and one-off custom projects. No job too big or small." },
 ];
 
 export default function ServicesSection() {
@@ -53,7 +54,7 @@ export default function ServicesSection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5">
           {services.map((service, i) => (
             <FadeUp key={service.num} delay={i * 0.04}>
-              <div className="group relative bg-cream dark:bg-charcoal-mid border-2 border-charcoal/85 dark:border-cedar/30 p-6 hover:border-rust hover:shadow-[6px_6px_0_0_rgba(20,19,15,0.18)] dark:hover:shadow-[6px_6px_0_0_rgba(184,115,51,0.2)] transition-all">
+              <Link href={`/services/${service.slug}`} className="block group relative bg-cream dark:bg-charcoal-mid border-2 border-charcoal/85 dark:border-cedar/30 p-6 hover:border-rust hover:shadow-[6px_6px_0_0_rgba(20,19,15,0.18)] dark:hover:shadow-[6px_6px_0_0_rgba(184,115,51,0.2)] transition-all">
                 {/* Job-slip header strip */}
                 <div className="flex items-center justify-between -mx-6 -mt-6 mb-5 px-6 py-2 bg-charcoal dark:bg-oil text-cream-dark border-b-2 border-charcoal dark:border-cedar/30">
                   <span className="font-stamped text-[10px] tracking-[0.25em] uppercase">Service Order</span>
@@ -66,10 +67,14 @@ export default function ServicesSection() {
 
                 <div className="rule-grit text-cedar mb-3" />
 
-                <p className="text-sm text-walnut dark:text-stone leading-relaxed font-sans">
+                <p className="text-sm text-walnut dark:text-stone leading-relaxed font-sans mb-4">
                   {service.blurb}
                 </p>
-              </div>
+
+                <div className="font-stamped text-[10px] tracking-[0.2em] uppercase text-rust group-hover:text-cedar transition-colors">
+                  Learn More →
+                </div>
+              </Link>
             </FadeUp>
           ))}
         </div>
