@@ -50,29 +50,41 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Services - paper-card grid with workshop ticket vibes */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5">
+        <div className="grid sm:grid-cols-2 gap-5">
           {services.map((service, i) => (
             <FadeUp key={service.num} delay={i * 0.04}>
-              <Link href={`/services/${service.slug}`} className="block group relative bg-cream dark:bg-charcoal-mid border-2 border-charcoal/85 dark:border-cedar/30 p-6 hover:border-rust hover:shadow-[6px_6px_0_0_rgba(20,19,15,0.18)] dark:hover:shadow-[6px_6px_0_0_rgba(184,115,51,0.2)] transition-all">
-                {/* Job-slip header strip */}
-                <div className="flex items-center justify-between -mx-6 -mt-6 mb-5 px-6 py-2 bg-charcoal dark:bg-oil text-cream-dark border-b-2 border-charcoal dark:border-cedar/30">
-                  <span className="font-stamped text-[10px] tracking-[0.25em] uppercase">Service Order</span>
-                  <span className="font-stencil text-cedar text-lg">№ {service.num}</span>
+              <Link
+                href={`/services/${service.slug}`}
+                className="block group relative bg-cream dark:bg-charcoal-mid border-2 border-charcoal/20 dark:border-cedar/30 overflow-hidden hover:border-rust hover:shadow-[6px_6px_0_0_rgba(20,19,15,0.18)] dark:hover:shadow-[6px_6px_0_0_rgba(184,115,51,0.2)] transition-all"
+              >
+                {/* Rust left accent */}
+                <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-rust/60 group-hover:bg-rust transition-colors" />
+
+                {/* Faded number watermark */}
+                <div
+                  className="absolute right-4 bottom-1 font-stencil leading-none text-charcoal/[0.055] dark:text-cream/[0.045] select-none pointer-events-none"
+                  style={{ fontSize: "clamp(72px, 9vw, 110px)" }}
+                  aria-hidden="true"
+                >
+                  {service.num}
                 </div>
 
-                <h3 className="font-stencil text-2xl text-charcoal dark:text-cream leading-tight mb-3 group-hover:text-rust">
-                  {service.title}
-                </h3>
+                <div className="relative pl-7 pr-6 pt-6 pb-6">
+                  <div className="font-stamped text-[9px] tracking-[0.3em] uppercase text-rust dark:text-cedar-pale mb-3">
+                    ✚ Service {service.num}
+                  </div>
 
-                <div className="rule-grit text-cedar mb-3" />
+                  <h3 className="font-stencil text-2xl md:text-[1.65rem] text-charcoal dark:text-cream leading-tight mb-4 group-hover:text-rust dark:group-hover:text-cedar-pale transition-colors">
+                    {service.title}
+                  </h3>
 
-                <p className="text-sm text-walnut dark:text-stone leading-relaxed font-sans mb-4">
-                  {service.blurb}
-                </p>
+                  <p className="text-base text-walnut dark:text-stone leading-relaxed mb-6">
+                    {service.blurb}
+                  </p>
 
-                <div className="font-stamped text-[10px] tracking-[0.2em] uppercase text-rust group-hover:text-cedar transition-colors">
-                  Learn More →
+                  <div className="flex items-center gap-2 font-stamped text-[10px] tracking-[0.25em] uppercase text-rust dark:text-cedar-pale">
+                    View service <span className="font-stencil text-sm group-hover:translate-x-1 inline-block transition-transform">→</span>
+                  </div>
                 </div>
               </Link>
             </FadeUp>

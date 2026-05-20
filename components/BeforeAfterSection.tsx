@@ -26,7 +26,7 @@ export default function BeforeAfterSection() {
         <FadeUp className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
             <div className="font-stamped text-[11px] tracking-[0.3em] uppercase text-rust dark:text-cedar-pale mb-3">
-              ✚ Featured Job Cards
+              ✚ Recent Projects
             </div>
             <h2 className="font-stencil text-5xl md:text-7xl text-charcoal dark:text-cream leading-[0.9]">
               Built with <span className={'shimmer-text-warm'}>purpose.</span>
@@ -40,13 +40,8 @@ export default function BeforeAfterSection() {
         <div className="grid md:grid-cols-2 gap-8">
           {cards.map((card, i) => (
             <FadeUp key={i} delay={i * 0.12}>
-              <div className="bg-cream dark:bg-charcoal-mid border-2 border-charcoal/85 dark:border-cedar/30">
-                {/* Job-slip header */}
-                <div className="flex items-center justify-between px-5 py-2.5 bg-charcoal dark:bg-oil text-cream-dark border-b-2 border-charcoal dark:border-cedar/30">
-                  <span className="font-stamped text-[10px] tracking-[0.25em] uppercase">
-                    Job Card · No. {card.no}
-                  </span>
-                </div>
+              <div className="relative bg-cream dark:bg-charcoal-mid border-2 border-charcoal/20 dark:border-cedar/30 overflow-hidden">
+                <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-rust" />
 
                 <div className="relative aspect-video overflow-hidden">
                   <Image
@@ -56,16 +51,17 @@ export default function BeforeAfterSection() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent" />
                 </div>
 
-                <div className="p-6">
-                  <div className="flex items-baseline justify-between gap-3 mb-2">
-                    <h3 className="font-stencil text-2xl text-charcoal dark:text-cream leading-tight">
-                      {card.project}
-                    </h3>
+                <div className="pl-7 pr-6 pt-5 pb-6">
+                  <div className="font-stamped text-[9px] tracking-[0.3em] uppercase text-rust dark:text-cedar-pale mb-2">
+                    ✚ Featured Project
                   </div>
-                  <div className="rule-grit text-cedar mb-3" />
-                  <p className="text-walnut dark:text-stone text-sm leading-relaxed">{card.detail}</p>
+                  <h3 className="font-stencil text-2xl md:text-3xl text-charcoal dark:text-cream leading-tight mb-3">
+                    {card.project}
+                  </h3>
+                  <p className="text-base text-walnut dark:text-stone leading-relaxed">{card.detail}</p>
                 </div>
               </div>
             </FadeUp>

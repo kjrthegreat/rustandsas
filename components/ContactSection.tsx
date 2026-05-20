@@ -346,6 +346,28 @@ export default function ContactSection() {
         </FadeUp>
 
       </div>
+
+      {/* Service area map */}
+      <FadeUp delay={0.2} className="relative max-w-6xl mx-auto mt-12">
+        <div className="border-t-2 border-charcoal/20 dark:border-cedar/30 pt-8">
+          <div className="font-stamped text-[11px] tracking-[0.3em] uppercase text-rust dark:text-cedar-pale mb-4">
+            ✚ Service Area · Somerset, KY &amp; Lake Cumberland Region
+          </div>
+          <div className="relative border-2 border-charcoal/20 dark:border-cedar/30 overflow-hidden" style={{ height: "280px" }}>
+            <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-rust z-10" />
+            <iframe
+              title="Rust & Sawdust KY service area — Somerset, Kentucky"
+              src="https://maps.google.com/maps?ll=37.092,-84.604&z=11&t=m&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0, display: "block" }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </FadeUp>
+
     </section>
   );
 }
