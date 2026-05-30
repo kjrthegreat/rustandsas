@@ -22,7 +22,7 @@ async function handleContact(request, env) {
     return cors({ error: "Invalid request body" }, 400);
   }
 
-  const { firstName, lastName, phone, email, service, description, images = [] } = data;
+  const { firstName, lastName, phone, email, service, description } = data;
 
   if (!firstName || !lastName || !phone || !email || !description) {
     return cors({ error: "Missing required fields" }, 400);
@@ -37,10 +37,6 @@ async function handleContact(request, env) {
     `Project Description:`,
     description,
   ];
-
-  if (images.length > 0) {
-    lines.push(``, `${images.length} photo${images.length > 1 ? "s" : ""} submitted — reply to request them.`);
-  }
 
   const payload = {
     from: "Rust & Sawdust <noreply@rustandsawdustky.com>",

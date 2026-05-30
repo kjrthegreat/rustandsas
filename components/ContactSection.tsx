@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { ImagePlus, X } from "lucide-react";
+import { useState } from "react";
 
 function InstagramIcon({ size = 16 }: { size?: number }) {
   return (
@@ -37,47 +36,6 @@ export default function ContactSection() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [service, setService] = useState("");
-  const [images, setImages] = useState<File[]>([]);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  function handleFiles(files: FileList | null) {
-    if (!files) return;
-    const incoming = Array.from(files).filter((f) => f.type.startsWith("image/"));
-    setImages((prev) => {
-      const existing = new Set(prev.map((f) => f.name + f.size));
-      return [...prev, ...incoming.filter((f) => !existing.has(f.name + f.size))];
-    });
-  }
-
-  function removeImage(index: number) {
-    setImages((prev) => prev.filter((_, i) => i !== index));
-  }
-
-  function handleDrop(e: React.DragEvent) {
-    e.preventDefault();
-    handleFiles(e.dataTransfer.files);
-  }
-
-  async function compressImage(file: File): Promise<{ name: string; base64: string }> {
-    return new Promise((resolve) => {
-      const img = new Image();
-      const url = URL.createObjectURL(file);
-      img.onload = () => {
-        URL.revokeObjectURL(url);
-        const MAX = 1200;
-        const scale = Math.min(1, MAX / Math.max(img.width, img.height));
-        const canvas = document.createElement("canvas");
-        canvas.width = Math.round(img.width * scale);
-        canvas.height = Math.round(img.height * scale);
-        canvas.getContext("2d")!.drawImage(img, 0, 0, canvas.width, canvas.height);
-        resolve({
-          name: file.name.replace(/\.[^.]+$/, ".jpg"),
-          base64: canvas.toDataURL("image/jpeg", 0.82).split(",")[1],
-        });
-      };
-      img.src = url;
-    });
-  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -85,7 +43,6 @@ export default function ContactSection() {
     setSubmitError(null);
 
     const fd = new FormData(e.currentTarget);
-    const compressed = await Promise.all(images.map(compressImage));
 
     try {
       const res = await fetch("/api/contact", {
@@ -98,7 +55,6 @@ export default function ContactSection() {
           email: fd.get("email"),
           service,
           description: fd.get("description"),
-          images: compressed,
         }),
       });
 
@@ -265,59 +221,6 @@ export default function ContactSection() {
                       required
                       className="bg-paper dark:bg-charcoal border-2 border-charcoal/30 dark:border-cedar/30 text-charcoal dark:text-cream placeholder:text-walnut/40 focus-visible:ring-rust focus-visible:border-rust rounded-none font-stamped resize-none"
                     />
-                  </div>
-
-                  {/* Image upload */}
-                  <div className="space-y-1.5">
-                    <Label className="font-stamped text-[10px] tracking-[0.2em] uppercase text-walnut dark:text-stone">
-                      Photos <span className="normal-case text-walnut/60">(optional)</span>
-                    </Label>
-
-                    <div
-                      onClick={() => fileInputRef.current?.click()}
-                      onDrop={handleDrop}
-                      onDragOver={(e) => e.preventDefault()}
-                      className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-charcoal/30 dark:border-cedar/30 bg-paper dark:bg-charcoal px-4 py-6 cursor-pointer hover:border-rust hover:bg-cream-dark dark:hover:bg-charcoal-mid transition-colors"
-                    >
-                      <ImagePlus size={22} className="text-rust/70 dark:text-cedar-pale/70" />
-                      <p className="font-stamped text-xs tracking-wide text-walnut dark:text-stone text-center">
-                        Click to upload or drag &amp; drop
-                      </p>
-                      <p className="font-stamped text-[10px] tracking-wider text-walnut/70 dark:text-stone/70">
-                        JPG · PNG · WEBP · HEIC · GIF · AVIF
-                      </p>
-                      <input
-                        ref={fileInputRef}
-                        type="file"
-                        accept="image/*,.heic,.heif"
-                        multiple
-                        className="hidden"
-                        onChange={(e) => handleFiles(e.target.files)}
-                      />
-                    </div>
-
-                    {images.length > 0 && (
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        {images.map((file, i) => (
-                          <div key={i} className="relative group w-16 h-16 overflow-hidden border-2 border-charcoal/30 dark:border-cedar/30 bg-paper dark:bg-charcoal-mid shrink-0">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={URL.createObjectURL(file)}
-                              alt={file.name}
-                              className="w-full h-full object-cover"
-                            />
-                            <button
-                              type="button"
-                              onClick={() => removeImage(i)}
-                              className="absolute inset-0 flex items-center justify-center bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity"
-                              aria-label="Remove image"
-                            >
-                              <X size={14} className="text-white" />
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    )}
                   </div>
 
                   {submitError && (
