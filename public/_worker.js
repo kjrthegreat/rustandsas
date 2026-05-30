@@ -40,7 +40,7 @@ async function handleContact(request, env) {
 
   const payload = {
     from: "Rust & Sawdust <noreply@rustandsawdustky.com>",
-    to: ["contact@oaklinedigital.org"],
+    to: ["rustandsawdustky@outlook.com"],
     reply_to: email,
     subject: `Quote Request — ${service || "General"} — ${firstName} ${lastName}`,
     text: lines.join("\n"),
