@@ -39,27 +39,30 @@ async function handleContact(request, env) {
   ];
 
   if (images.length > 0) {
-    lines.push(``, `${images.length} photo${images.length > 1 ? "s" : ""} submitted — reply to this email to request them.`);
+    lines.push(``, `${images.length} photo${images.length > 1 ? "s" : ""} submitted — reply to request them.`);
   }
 
   const payload = {
-    access_key: env.WEB3FORMS_KEY,
+    from: "Rust & Sawdust <noreply@rustandsawdustky.com>",
+    to: ["contact@oaklinedigital.org"],
+    reply_to: email,
     subject: `Quote Request — ${service || "General"} — ${firstName} ${lastName}`,
-    from_name: `${firstName} ${lastName} via Rust & Sawdust`,
-    replyto: email,
-    message: lines.join("\n"),
+    text: lines.join("\n"),
   };
 
-  const w3Res = await fetch("https://api.web3forms.com/submit", {
+  const resendRes = await fetch("https://api.resend.com/emails", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+    },
     body: JSON.stringify(payload),
   });
 
-  const result = await w3Res.json().catch(() => ({}));
+  const result = await resendRes.json().catch(() => ({}));
 
-  if (!w3Res.ok || !result.success) {
-    console.error("Web3Forms error:", result);
+  if (!resendRes.ok) {
+    console.error("Resend error:", result);
     return cors({ error: "Failed to send email" }, 502);
   }
 

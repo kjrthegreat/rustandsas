@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#8a3a1f"/>
+  <rect x="2" y="2" width="28" height="28" fill="none" stroke="#f5f0e8" stroke-width="1.5" opacity="0.35"/>
+  <text
+    x="16"
+    y="23"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-weight="900"
+    font-size="20"
+    fill="#f5f0e8"
+    text-anchor="middle"
+  >R</text>
+</svg>

@@ -61,6 +61,20 @@ export default function HeroSection() {
             See Our Work <span className="ml-1 leading-none">→</span>
           </Link>
         </div>
+
+        <a
+          href="https://www.thumbtack.com/ky/somerset/moving-companies/rust-sawdust-ky-building-services/service/329281428090347630"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex items-center gap-3 px-5 py-2.5 border border-cedar/40 hover:border-cedar bg-oil/40 group transition-colors"
+          aria-label="4.9 out of 5 stars — 28 verified reviews on Thumbtack"
+        >
+          <span className="text-rust text-xl leading-none tracking-widest" aria-hidden="true">★★★★★</span>
+          <div className="w-px h-4 bg-cedar/40 flex-shrink-0" />
+          <span className="font-stamped text-[11px] tracking-[0.22em] uppercase text-stone group-hover:text-cedar-pale transition-colors">
+            4.9 · 28 Reviews on Thumbtack
+          </span>
+        </a>
       </div>
 
       {/* Bottom ribbon - 3+2 layout on mobile/tablet, single row on desktop */}
