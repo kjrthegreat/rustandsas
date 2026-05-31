@@ -62,21 +62,12 @@ export const metadata: Metadata = {
     title: "Rust & Sawdust - Custom Home Improvements | Somerset, KY",
     description:
       "Custom decks, porches, barns, remodels, concrete, and woodwork. Insured crew serving Somerset, KY and the Lake Cumberland region. Free quotes, 2-year warranty.",
-    images: [
-      {
-        url: "/images/ep.png",
-        width: 1200,
-        height: 630,
-        alt: "Rust & Sawdust - Custom Home Improvements in Somerset, KY",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Rust & Sawdust - Custom Home Improvements | Somerset, KY",
     description:
       "Custom decks, porches, barns, remodels, concrete, and woodwork. Insured crew serving Somerset, KY and the Lake Cumberland region.",
-    images: ["/images/ep.png"],
   },
   alternates: {
     canonical: BASE_URL,
