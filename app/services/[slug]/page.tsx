@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SERVICES, getService } from "@/lib/services";
+import { getServiceImages } from "@/lib/service-images";
+
+const NUM_GALLERY_PREVIEW = 4;
 
 const BASE_URL = "https://www.rustandsawdustky.com";
 
@@ -33,6 +36,7 @@ export default async function ServicePage({ params }: Props) {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) notFound();
+  const images = getServiceImages(slug);
 
   return (
     <div className="min-h-screen bg-oil text-cream-dark">
@@ -59,6 +63,12 @@ export default async function ServicePage({ params }: Props) {
             </span>
           </Link>
           <div className="flex items-center gap-3">
+            <Link
+              href="/gallery"
+              className="hidden md:inline font-stamped text-[11px] font-bold tracking-[0.18em] uppercase text-cream hover:text-cedar-pale transition-colors"
+            >
+              Gallery
+            </Link>
             <Link
               href="/#services"
               className="hidden md:inline font-stamped text-[11px] font-bold tracking-[0.18em] uppercase text-cream hover:text-cedar-pale transition-colors"
@@ -108,7 +118,7 @@ export default async function ServicePage({ params }: Props) {
                 {service.description}
               </p>
               <p className="text-sm leading-relaxed text-stone/70">
-                Serving Somerset, Pulaski County, and the Lake Cumberland region.
+                Serving Somerset and the Lake Cumberland region and beyond within a 40 mile radius.
                 Insured crew. 2-year warranty on all work. Veteran &amp; first-time
                 customer discounts available.
               </p>
@@ -132,6 +142,56 @@ export default async function ServicePage({ params }: Props) {
               </ul>
             </div>
           </div>
+
+          {/* Gallery preview — links to the full filtered gallery */}
+          {images.length > 0 && (
+            <section className="mb-14">
+              <div className="flex items-end justify-between border-b-[3px] border-double border-cedar/50 pb-3 mb-6">
+                <div>
+                  <div className="font-stamped text-[10px] tracking-[0.3em] uppercase text-rust mb-1">
+                    § Recent Work
+                  </div>
+                  <h2 className="font-stencil text-2xl sm:text-3xl text-cream leading-none">
+                    {service.title}
+                  </h2>
+                </div>
+                <Link
+                  href={`/gallery?service=${service.slug}`}
+                  className="font-stamped text-[10px] tracking-[0.25em] uppercase text-cedar-pale hover:text-rust transition-colors"
+                >
+                  See all {String(images.length).padStart(2, "0")} →
+                </Link>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+                {images.slice(0, NUM_GALLERY_PREVIEW).map((img, i) => (
+                  <Link
+                    key={img.src}
+                    href={`/gallery?service=${service.slug}`}
+                    title={img.title}
+                    aria-label={img.alt}
+                    className="group relative block aspect-square overflow-hidden bg-charcoal-mid border-2 border-cedar/30 hover:border-rust transition-colors"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      title={img.title}
+                      loading={i < 2 ? "eager" : "lazy"}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </Link>
+                ))}
+              </div>
+              <div className="mt-5 text-center sm:text-right">
+                <Link
+                  href={`/gallery?service=${service.slug}`}
+                  className="inline-flex items-center justify-center border-2 border-cedar/40 hover:border-rust hover:text-rust text-cream-dark font-stamped text-[10px] tracking-[0.3em] uppercase px-5 h-10 transition-colors"
+                >
+                  View the full gallery →
+                </Link>
+              </div>
+            </section>
+          )}
 
           {/* CTA */}
           <div className="border-y-[3px] border-double border-cedar/50 py-10 text-center">

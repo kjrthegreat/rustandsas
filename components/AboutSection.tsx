@@ -66,7 +66,7 @@ export default function AboutSection() {
             </p>
             <p>
               Today, Rust &amp; Sawdust handles residential, commercial, and facility management work
-              across the Lake Cumberland region. We specialize in custom builds - if you can dream
+              across the Lake Cumberland region and beyond within a 40 mile radius. We specialize in custom builds - if you can dream
               it, we can build it - and every job comes with a{" "}
               <span className="font-stencil text-rust dark:text-cedar-pale">2-year warranty</span>.
               Insured, experienced, safe, and respectful, with discounts for U.S. Veterans and

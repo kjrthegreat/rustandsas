@@ -119,7 +119,7 @@ export const SERVICES: Service[] = [
       "Window installation, interior trim carpentry, finish work, and interior/exterior painting in Somerset and Pulaski County, KY. Insured crew, 2-year warranty. Call 502-542-4473.",
     tagline: "The finish work that makes a house feel like a home.",
     description:
-      "New window installation, custom interior trim, finish carpentry, and interior or exterior painting. We do the detail work that elevates a project from functional to finished - across Somerset, Pulaski County, and the Lake Cumberland region.",
+      "New window installation, custom interior trim, finish carpentry, and interior or exterior painting. We do the detail work that elevates a project from functional to finished - across Somerset and the Lake Cumberland region and beyond within a 40 mile radius.",
     bullets: [
       "Window installation and replacement",
       "Interior trim and finish carpentry",

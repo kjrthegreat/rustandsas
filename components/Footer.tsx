@@ -50,7 +50,7 @@ export default function Footer() {
           <span className={'shimmer-text'}>RUST</span><span className={'text-rust'}>&amp;</span><span className={'shimmer-text'}>SAWDUST</span>
         </div>
         <div className={'breathe-text font-stamped text-[11px] md:text-sm uppercase text-cedar-pale mt-5'}>
-          ★ Somerset, Kentucky · Lake Cumberland Region ★
+          ★ Somerset, KY · Lake Cumberland & Beyond · 40 Mi Radius ★
         </div>
         <div className={'font-hand text-2xl md:text-3xl mt-2'}>
           <span className={'shimmer-text'}>&ldquo;In God We Trust.&rdquo;</span>

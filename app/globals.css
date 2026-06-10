@@ -368,3 +368,19 @@
     );
   border-radius: 999px;
 }
+
+/* Gallery filter: server-renders all tiles so crawlers see all alts;
+   client toggles data-gallery-active on the wrapper to hide non-matching tiles. */
+.gallery-grid[data-gallery-active]:not([data-gallery-active="all"]) > [data-service] {
+  display: none;
+}
+.gallery-grid[data-gallery-active="decks-porches"]           > [data-service="decks-porches"],
+.gallery-grid[data-gallery-active="screened-rooms-pergolas"] > [data-service="screened-rooms-pergolas"],
+.gallery-grid[data-gallery-active="buildings-barns-sheds"]   > [data-service="buildings-barns-sheds"],
+.gallery-grid[data-gallery-active="concrete-excavating"]     > [data-service="concrete-excavating"],
+.gallery-grid[data-gallery-active="custom-woodwork"]         > [data-service="custom-woodwork"],
+.gallery-grid[data-gallery-active="additions-remodels"]      > [data-service="additions-remodels"],
+.gallery-grid[data-gallery-active="windows-trim-painting"]   > [data-service="windows-trim-painting"],
+.gallery-grid[data-gallery-active="golf-greens-specialty"]   > [data-service="golf-greens-specialty"] {
+  display: block;
+}

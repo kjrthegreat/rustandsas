@@ -3,12 +3,12 @@ import Link from "next/link";
 import FadeUp from "@/components/FadeUp";
 
 const galleryItems = [
-  { src: "/images/469272957_18058612582888879_8957753396333329617_n.jpg", label: "Cedar Porch & Patio" },
-  { src: "/images/468926418_18058612408888879_9066889187788909200_n.jpg", label: "Covered Cedar Porch" },
-  { src: "/images/471674753_18060949915888879_7068889632734888039_n.jpg", label: "Lake House Screen Room" },
-  { src: "/images/469071339_18058607554888879_1817159894321510102_n.jpg", label: "Windows & Trim" },
-  { src: "/images/484033883_1094977005980683_5821486936191370129_n.jpg",  label: "Open-Air Barn" },
-  { src: "/images/468988893_18058613398888879_666192470319590_n.jpg",     label: "Kitchen Remodel" },
+  { src: "/images/services/decks-porches/decks-porches-01.jpg",                 label: "Cedar Deck",         slug: "decks-porches" },
+  { src: "/images/services/screened-rooms-pergolas/screened-rooms-pergolas-01.jpg", label: "Covered Outdoor Room", slug: "screened-rooms-pergolas" },
+  { src: "/images/services/buildings-barns-sheds/buildings-barns-sheds-01.jpg", label: "Custom Garage",      slug: "buildings-barns-sheds" },
+  { src: "/images/services/additions-remodels/additions-remodels-03.jpg",       label: "Kitchen Remodel",    slug: "additions-remodels" },
+  { src: "/images/services/custom-woodwork/custom-woodwork-01.jpg",             label: "Live-Edge Wood",     slug: "custom-woodwork" },
+  { src: "/images/services/golf-greens-specialty/golf-greens-specialty-01.jpg", label: "Backyard Putting Green", slug: "golf-greens-specialty" },
 ];
 
 export default function GallerySection() {
@@ -39,17 +39,20 @@ export default function GallerySection() {
             </h2>
           </div>
           <Link
-            href="#contact"
+            href="/gallery"
             className="font-stencil text-sm tracking-widest uppercase text-charcoal dark:text-cream-dark hover:text-rust border-b-[3px] border-charcoal dark:border-cedar/50 hover:border-rust pb-1 self-start md:self-end"
           >
-            Start your project →
+            View full gallery →
           </Link>
         </FadeUp>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {galleryItems.map((item, i) => (
             <FadeUp key={i} delay={i * 0.07}>
-              <div className="relative polaroid hover:scale-[1.02] transition-transform">
+              <Link
+                href={`/gallery?service=${item.slug}`}
+                className="block relative polaroid hover:scale-[1.02] transition-transform"
+              >
                 <div
                   className="relative overflow-hidden bg-cream-dark w-full"
                   style={{ aspectRatio: "4/3" }}
@@ -69,10 +72,19 @@ export default function GallerySection() {
                     {item.label}
                   </span>
                 </div>
-              </div>
+              </Link>
             </FadeUp>
           ))}
         </div>
+
+        <FadeUp className="mt-12 text-center">
+          <Link
+            href="/gallery"
+            className="inline-flex items-center justify-center bg-rust hover:bg-cedar text-white-warm font-stencil text-sm sm:text-base tracking-widest uppercase px-8 h-12 border-2 border-cream/30 shadow-[4px_4px_0_0_rgba(20,19,15,0.35)]"
+          >
+            View All Project Photos →
+          </Link>
+        </FadeUp>
 
       </div>
     </section>

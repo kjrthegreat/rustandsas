@@ -22,7 +22,9 @@ async function handleContact(request, env) {
     return cors({ error: "Invalid request body" }, 400);
   }
 
-  const { firstName, lastName, phone, email, service, description } = data;
+  const { firstName, lastName, phone, email, service, description, website } = data;
+
+  if (website) return cors({ success: true }, 200);
 
   if (!firstName || !lastName || !phone || !email || !description) {
     return cors({ error: "Missing required fields" }, 400);

@@ -43,8 +43,9 @@ export default function HeroSection() {
 
         <p className="text-stone text-base md:text-lg max-w-2xl leading-relaxed mb-10">
           Decks, porches, barns, remodels, concrete, and custom woodwork -
-          built by an insured, experienced crew serving the Lake Cumberland
-          region. Call or text for a free quote today.
+          built by an insured, experienced crew serving Somerset and the Lake
+          Cumberland region and beyond within a 40 mile radius.
+          Call or text for a free quote today.
         </p>
 
         <div className="flex flex-wrap gap-3 justify-center">

@@ -26,7 +26,7 @@ export default function ServicesSection() {
               § Catalogue of Services · No. 1
             </div>
             <div className="font-stamped text-[10px] tracking-[0.3em] uppercase text-walnut dark:text-stone">
-              Somerset · Lake Cumberland · Kentucky
+              Somerset · Lake Cumberland & Beyond · KY
             </div>
           </div>
           <h2 className="font-stencil text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-charcoal dark:text-cream leading-[0.9] mt-4">
@@ -54,7 +54,7 @@ export default function ServicesSection() {
           {services.map((service, i) => (
             <FadeUp key={service.num} delay={i * 0.04}>
               <Link
-                href={`/services/${service.slug}`}
+                href={`/gallery?service=${service.slug}`}
                 className="block group relative bg-cream dark:bg-charcoal-mid border-2 border-charcoal/20 dark:border-cedar/30 overflow-hidden hover:border-rust hover:shadow-[6px_6px_0_0_rgba(20,19,15,0.18)] dark:hover:shadow-[6px_6px_0_0_rgba(184,115,51,0.2)] transition-all"
               >
                 {/* Rust left accent */}
@@ -83,7 +83,7 @@ export default function ServicesSection() {
                   </p>
 
                   <div className="flex items-center gap-2 font-stamped text-[10px] tracking-[0.25em] uppercase text-rust dark:text-cedar-pale">
-                    View service <span className="font-stencil text-sm group-hover:translate-x-1 inline-block transition-transform">→</span>
+                    View photos <span className="font-stencil text-sm group-hover:translate-x-1 inline-block transition-transform">→</span>
                   </div>
                 </div>
               </Link>

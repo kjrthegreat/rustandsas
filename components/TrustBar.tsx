@@ -3,7 +3,7 @@ const items = [
   "Custom Builds & Woodwork",
   "Decks · Porches · Barns · Concrete",
   "First-Timer Discount",
-  "Lake Cumberland Region",
+  "Lake Cumberland & Beyond · 40 Mi",
   "Licensed & Insured",
   "2-Year Warranty on Every Job",
 ];

@@ -55,6 +55,7 @@ export default function ContactSection() {
           email: fd.get("email"),
           service,
           description: fd.get("description"),
+          website: fd.get("website"),
         }),
       });
 
@@ -181,6 +182,15 @@ export default function ContactSection() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Honeypot — hidden from real users, bots fill it in */}
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0 }}
+                  />
                   <div className="grid grid-cols-2 gap-4">
                     {[{ label: "First Name", name: "firstName", placeholder: "John" }, { label: "Last Name", name: "lastName", placeholder: "Smith" }].map((f) => (
                       <div key={f.label} className="space-y-1.5">
@@ -254,7 +264,7 @@ export default function ContactSection() {
       <FadeUp delay={0.2} className="relative max-w-6xl mx-auto mt-12">
         <div className="border-t-2 border-charcoal/20 dark:border-cedar/30 pt-8">
           <div className="font-stamped text-[11px] tracking-[0.3em] uppercase text-rust dark:text-cedar-pale mb-4">
-            ✚ Service Area · Somerset, KY &amp; Lake Cumberland Region
+            ✚ Service Area · Somerset, KY · Lake Cumberland &amp; Beyond · 40 Mi
           </div>
           <div className="relative border-2 border-charcoal/20 dark:border-cedar/30 overflow-hidden" style={{ height: "280px" }}>
             <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-rust z-10" />
