@@ -40,7 +40,7 @@ export default function ServicesSection() {
           </p>
         </FadeUp>
 
-        <div className="mt-6 mb-10 text-walnut dark:text-stone max-w-3xl">
+        <div className="mt-6 mb-8 text-walnut dark:text-stone max-w-3xl">
           <p className="text-base md:text-lg leading-relaxed">
             Residential, commercial, and facility management work - every job backed by a{" "}
             <span className="font-stencil text-rust dark:text-cedar-pale">2-YEAR WARRANTY</span>.
@@ -50,11 +50,20 @@ export default function ServicesSection() {
           </p>
         </div>
 
+        <div className="mb-10">
+          <Link
+            href="/gallery"
+            className="inline-flex items-center justify-center bg-rust hover:bg-cedar text-white-warm font-stencil text-sm tracking-widest uppercase px-7 h-11 border-2 border-cream/30 shadow-[4px_4px_0_0_rgba(20,19,15,0.25)] transition-colors"
+          >
+            View Full Gallery →
+          </Link>
+        </div>
+
         <div className="grid sm:grid-cols-2 gap-5">
           {services.map((service, i) => (
             <FadeUp key={service.num} delay={i * 0.04}>
               <Link
-                href={`/gallery?service=${service.slug}`}
+                href={`/services/${service.slug}`}
                 className="block group relative bg-cream dark:bg-charcoal-mid border-2 border-charcoal/20 dark:border-cedar/30 overflow-hidden hover:border-rust hover:shadow-[6px_6px_0_0_rgba(20,19,15,0.18)] dark:hover:shadow-[6px_6px_0_0_rgba(184,115,51,0.2)] transition-all"
               >
                 {/* Rust left accent */}
@@ -83,7 +92,7 @@ export default function ServicesSection() {
                   </p>
 
                   <div className="flex items-center gap-2 font-stamped text-[10px] tracking-[0.25em] uppercase text-rust dark:text-cedar-pale">
-                    View photos <span className="font-stencil text-sm group-hover:translate-x-1 inline-block transition-transform">→</span>
+                    View service &amp; photos <span className="font-stencil text-sm group-hover:translate-x-1 inline-block transition-transform">→</span>
                   </div>
                 </div>
               </Link>

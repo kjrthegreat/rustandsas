@@ -29,9 +29,22 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+    { "@type": "ListItem", position: 2, name: "Project Gallery", item: `${BASE_URL}/gallery` },
+  ],
+};
+
 export default function GalleryPage() {
   return (
     <div className="min-h-screen bg-oil text-cream-dark">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       {/* Top notice strip */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-oil text-cedar-pale font-stamped text-[10px] tracking-[0.2em] sm:tracking-[0.25em] uppercase py-1 text-center border-b border-cedar/40 overflow-hidden whitespace-nowrap">
         <span className="px-2">Somerset, KY</span>

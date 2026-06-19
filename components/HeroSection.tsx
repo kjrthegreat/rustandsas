@@ -7,7 +7,7 @@ export default function HeroSection() {
       {/* Background - zoomed in on porch structure, sky cropped out */}
       <Image
         src="/images/ep.png"
-        alt="Rust & Sawdust - barn build"
+        alt="Post-frame pole barn with a metal roof under construction by Rust & Sawdust in Somerset, KY"
         fill
         priority
         className="object-cover object-[center_55%] opacity-80"

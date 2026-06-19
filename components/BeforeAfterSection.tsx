@@ -6,12 +6,14 @@ const cards = [
     no: "042",
     src: "/images/489956216_1114534607358256_9119355287785532819_n.jpg",
     project: "Custom Bar & Pipe Shelving",
+    alt: "Live-edge walnut bar with a custom sink cutout and black pipe shelving wall, built by Rust & Sawdust in Somerset, KY",
     detail: "Live-edge walnut countertop with a custom sink cutout, black pipe shelving wall, and shiplap base - a complete bar room transformation.",
   },
   {
     no: "067",
     src: "/images/670497905_18106916803888879_7349982229797857235_n.jpg",
     project: "Lakeside Storage Rack",
+    alt: "Cedar lakeside storage rack holding kayaks and life vests at the water's edge on Lake Cumberland, KY",
     detail: "Cedar storage rack at the water's edge, housing kayaks and life vests - clean, functional, built for lake living.",
   },
 ];
@@ -46,7 +48,7 @@ export default function BeforeAfterSection() {
                 <div className="relative aspect-video overflow-hidden">
                   <Image
                     src={card.src}
-                    alt={card.project}
+                    alt={card.alt}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"

@@ -38,8 +38,53 @@ export default async function ServicePage({ params }: Props) {
   if (!service) notFound();
   const images = getServiceImages(slug);
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${BASE_URL}/#services` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: service.title,
+        item: `${BASE_URL}/services/${service.slug}`,
+      },
+    ],
+  };
+
+  const serviceLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    serviceType: service.title,
+    description: service.metaDescription,
+    url: `${BASE_URL}/services/${service.slug}`,
+    provider: {
+      "@type": "GeneralContractor",
+      "@id": `${BASE_URL}/#business`,
+      name: "Rust & Sawdust",
+      telephone: "+15025424473",
+      url: BASE_URL,
+    },
+    areaServed: [
+      "Somerset, KY",
+      "Pulaski County, KY",
+      "Lake Cumberland Region",
+    ],
+    ...(images[0] ? { image: `${BASE_URL}${images[0].src}` } : {}),
+  };
+
   return (
     <div className="min-h-screen bg-oil text-cream-dark">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }}
+      />
       {/* Top notice strip */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-oil text-cedar-pale font-stamped text-[10px] tracking-[0.2em] sm:tracking-[0.25em] uppercase py-1 text-center border-b border-cedar/40 overflow-hidden whitespace-nowrap">
         <span className="px-2">Somerset, KY</span>

@@ -270,7 +270,7 @@ export default function ContactSection() {
             <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-rust z-10" />
             <iframe
               title="Rust & Sawdust KY service area — Somerset, Kentucky"
-              src="https://maps.google.com/maps?ll=37.092,-84.604&z=11&t=m&output=embed"
+              src="https://maps.google.com/maps?q=Rust%20and%20Sawdust%2C%20Somerset%2C%20KY&ll=37.092,-84.604&z=10&t=m&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, display: "block" }}

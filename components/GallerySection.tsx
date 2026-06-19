@@ -3,12 +3,12 @@ import Link from "next/link";
 import FadeUp from "@/components/FadeUp";
 
 const galleryItems = [
-  { src: "/images/services/decks-porches/decks-porches-01.jpg",                 label: "Cedar Deck",         slug: "decks-porches" },
-  { src: "/images/services/screened-rooms-pergolas/screened-rooms-pergolas-01.jpg", label: "Covered Outdoor Room", slug: "screened-rooms-pergolas" },
-  { src: "/images/services/buildings-barns-sheds/buildings-barns-sheds-01.jpg", label: "Custom Garage",      slug: "buildings-barns-sheds" },
-  { src: "/images/services/additions-remodels/additions-remodels-03.jpg",       label: "Kitchen Remodel",    slug: "additions-remodels" },
-  { src: "/images/services/custom-woodwork/custom-woodwork-01.jpg",             label: "Live-Edge Wood",     slug: "custom-woodwork" },
-  { src: "/images/services/golf-greens-specialty/golf-greens-specialty-01.jpg", label: "Backyard Putting Green", slug: "golf-greens-specialty" },
+  { src: "/images/services/decks-porches/decks-porches-01.jpg",                 label: "Cedar Deck",             alt: "Custom cedar deck with railings on a Somerset, KY home by Rust & Sawdust", slug: "decks-porches" },
+  { src: "/images/services/screened-rooms-pergolas/screened-rooms-pergolas-01.jpg", label: "Covered Outdoor Room", alt: "Covered outdoor living room and patio built in Somerset, KY", slug: "screened-rooms-pergolas" },
+  { src: "/images/services/buildings-barns-sheds/buildings-barns-sheds-01.jpg", label: "Custom Garage",          alt: "Custom metal garage with white roll-up doors built in Somerset, KY", slug: "buildings-barns-sheds" },
+  { src: "/images/services/additions-remodels/additions-remodels-03.jpg",       label: "Kitchen Remodel",        alt: "White kitchen remodel with stainless steel appliances in Pulaski County, KY", slug: "additions-remodels" },
+  { src: "/images/services/custom-woodwork/custom-woodwork-01.jpg",             label: "Live-Edge Wood",         alt: "Live-edge walnut shelf custom-built for a Somerset, KY home", slug: "custom-woodwork" },
+  { src: "/images/services/golf-greens-specialty/golf-greens-specialty-01.jpg", label: "Backyard Putting Green", alt: "Custom backyard putting green built in Somerset, KY", slug: "golf-greens-specialty" },
 ];
 
 export default function GallerySection() {
@@ -59,7 +59,7 @@ export default function GallerySection() {
                 >
                   <Image
                     src={item.src}
-                    alt={item.label}
+                    alt={item.alt}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"

@@ -371,7 +371,7 @@
 
 /* Gallery filter: server-renders all tiles so crawlers see all alts;
    client toggles data-gallery-active on the wrapper to hide non-matching tiles. */
-.gallery-grid[data-gallery-active]:not([data-gallery-active="all"]) > [data-service] {
+.gallery-grid:not([data-gallery-active="all"]) > [data-service] {
   display: none;
 }
 .gallery-grid[data-gallery-active="decks-porches"]           > [data-service="decks-porches"],

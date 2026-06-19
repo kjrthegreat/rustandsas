@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Source_Sans_3, Anton, Special_Elite, Caveat } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { SERVICES } from "@/lib/services";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -83,19 +84,82 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#1F2021",
+};
+
+const THUMBTACK_URL =
+  "https://www.thumbtack.com/ky/somerset/moving-companies/rust-sawdust-ky-building-services/service/329281428090347630";
+
+// On-page customer reviews (mirrors components/ReviewsSection.tsx). Marked up so the
+// star rating can surface in search results. Keep in sync with what's visible on the page.
+const onPageReviews = [
+  {
+    author: "Steve H.",
+    datePublished: "2025-09-01",
+    reviewBody:
+      "Highly recommend, fair and honest. A level of professionalism rarely seen today. He kept me in the loop for the entire job.",
+  },
+  {
+    author: "James R.",
+    datePublished: "2026-04-01",
+    reviewBody:
+      "We had a significant amount of work completed spanning several trades (tile, drywall, carpentry) and all work was completed at a very high quality.",
+  },
+  {
+    author: "Tim D.",
+    datePublished: "2026-03-01",
+    reviewBody:
+      "Noah is a top notch guy! He aims to please all his clients/customers. He goes above and beyond to exceed all of his customers expectations.",
+  },
+  {
+    author: "Lisa G.",
+    datePublished: "2026-03-01",
+    reviewBody:
+      "Noah has done several jobs for me and I have been very pleased with the work. He is easy to work with and is very honest.",
+  },
+  {
+    author: "Anthony S.",
+    datePublished: "2026-03-01",
+    reviewBody:
+      "This company thrives on meeting the expectations of the customers needs. Always on time. Very consistent, brutally honest in what needs to be done.",
+  },
+];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
+  "@id": `${BASE_URL}/#business`,
   name: "Rust & Sawdust",
+  alternateName: ["Rust and Sawdust", "Rust & Sawdust KY", "Rust and Sawdust KY"],
+  slogan: "Custom building. Crafted right.",
   url: BASE_URL,
   telephone: "+15025424473",
+  email: "rustandsawdustky@gmail.com",
+  logo: `${BASE_URL}/logo.png`,
+  image: `${BASE_URL}/logo.png`,
+  priceRange: "$$",
+  currenciesAccepted: "USD",
+  paymentAccepted: "Cash, Check, Credit Card",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Somerset",
     addressRegion: "KY",
+    postalCode: "42501",
     addressCountry: "US",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 37.0922,
+    longitude: -84.6041,
+  },
+  hasMap: "https://www.google.com/maps/search/?api=1&query=Rust+and+Sawdust+Somerset+KY",
   areaServed: [
+    {
+      "@type": "GeoCircle",
+      geoMidpoint: { "@type": "GeoCoordinates", latitude: 37.0922, longitude: -84.6041 },
+      geoRadius: "64374", // ~40 miles, in meters
+    },
     "Somerset, KY",
     "Pulaski County, KY",
     "Russell County, KY",
@@ -106,13 +170,64 @@ const jsonLd = {
     "Monticello, KY",
     "Russell Springs, KY",
   ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+  ],
   description:
     "Custom building, crafting & design. Decks, porches, barns, remodels, concrete, and custom woodwork built by an insured, experienced crew serving Somerset and the Lake Cumberland region and beyond within a 40 mile radius.",
+  knowsAbout: [
+    "Deck building",
+    "Porch and patio cover construction",
+    "Screened rooms and pergolas",
+    "Pole barns and post-frame buildings",
+    "Concrete and excavating",
+    "Custom woodwork and live-edge countertops",
+    "Home additions and remodeling",
+    "Window installation, trim, and painting",
+    "Backyard putting greens",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Construction & Remodeling Services",
+    itemListElement: SERVICES.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.title,
+        url: `${BASE_URL}/services/${service.slug}`,
+        serviceType: service.title,
+        provider: { "@id": `${BASE_URL}/#business` },
+        areaServed: "Somerset, KY and the Lake Cumberland region",
+      },
+    })),
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "28",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  review: onPageReviews.map((r) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: r.author },
+    datePublished: r.datePublished,
+    reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+    reviewBody: r.reviewBody,
+  })),
   sameAs: [
     "https://www.instagram.com/rustandsawdustky/",
     "https://www.facebook.com/p/Rust-and-Sawdust-KY-100064051812669/",
+    THUMBTACK_URL,
+    // Verified Google Business Profile (Knowledge Graph entity /g/11zg20p4f9)
+    "https://www.google.com/search?kgmid=/g/11zg20p4f9",
+    "https://share.google/cQXvG2ACRTAsYKc8j",
   ],
-  priceRange: "$$",
 };
 
 export default function RootLayout({
