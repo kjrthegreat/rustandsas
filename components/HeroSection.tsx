@@ -6,7 +6,7 @@ export default function HeroSection() {
     <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-oil">
       {/* Background - zoomed in on porch structure, sky cropped out */}
       <Image
-        src="/images/ep.png"
+        src="/images/ep.webp"
         alt="Post-frame pole barn with a metal roof under construction by Rust & Sawdust in Somerset, KY"
         fill
         priority

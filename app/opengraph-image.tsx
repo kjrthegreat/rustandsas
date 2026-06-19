@@ -7,8 +7,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OGImage() {
-  const imgBuffer = fs.readFileSync(path.join(process.cwd(), "public/images/ep.png"));
-  const imgSrc = `data:image/png;base64,${imgBuffer.toString("base64")}`;
+  // Satori (next/og) can only embed PNG/JPEG, not WebP — use a JPEG copy of the hero.
+  const imgBuffer = fs.readFileSync(path.join(process.cwd(), "public/images/ep-og.jpg"));
+  const imgSrc = `data:image/jpeg;base64,${imgBuffer.toString("base64")}`;
 
   return new ImageResponse(
     (

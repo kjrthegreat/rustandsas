@@ -21,7 +21,7 @@ export default function AboutSection() {
             <div className="relative polaroid">
               <div className="relative aspect-[4/5] overflow-hidden bg-cream-dark">
                 <Image
-                  src="/images/nd.png"
+                  src="/images/nd.webp"
                   alt="Rust & Sawdust - porch build in progress"
                   fill
                   className="object-cover"
