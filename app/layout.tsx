@@ -4,35 +4,48 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { SERVICES } from "@/lib/services";
 import "./globals.css";
 
+// preload:false on all fonts — they use display:swap, so text paints
+// immediately in a fallback. This keeps the 662KB of font files from
+// preloading at high priority ahead of the LCP hero image on mobile.
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   style: ["normal", "italic"],
   weight: ["400", "700"],
+  display: "swap",
+  preload: false,
 });
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
   subsets: ["latin"],
   weight: ["300", "400", "600"],
+  display: "swap",
+  preload: false,
 });
 
 const anton = Anton({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400"],
+  display: "swap",
+  preload: false,
 });
 
 const specialElite = Special_Elite({
   variable: "--font-stamp",
   subsets: ["latin"],
   weight: ["400"],
+  display: "swap",
+  preload: false,
 });
 
 const caveat = Caveat({
   variable: "--font-hand",
   subsets: ["latin"],
   weight: ["400", "700"],
+  display: "swap",
+  preload: false,
 });
 
 const BASE_URL = "https://www.rustandsawdustky.com";
