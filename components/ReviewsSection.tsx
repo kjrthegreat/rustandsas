@@ -45,7 +45,7 @@ const THUMBTACK_URL =
 function Stars({ size = "text-base", animated = false }: { size?: string; animated?: boolean }) {
   if (animated) {
     return (
-      <div className="flex gap-0.5 text-rust dark:text-cedar-pale" aria-label="5 out of 5 stars">
+      <div className="flex gap-0.5 text-rust dark:text-cedar-pale" role="img" aria-label="5 out of 5 stars">
         {[0, 1, 2, 3, 4].map((i) => (
           <span
             key={i}
@@ -60,7 +60,7 @@ function Stars({ size = "text-base", animated = false }: { size?: string; animat
     );
   }
   return (
-    <span className={`${size} tracking-widest text-rust dark:text-cedar-pale leading-none`} aria-label="5 out of 5 stars">
+    <span className={`${size} tracking-widest text-rust dark:text-cedar-pale leading-none`} role="img" aria-label="5 out of 5 stars">
       ★★★★★
     </span>
   );
