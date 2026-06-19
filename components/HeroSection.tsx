@@ -1,17 +1,31 @@
-import Image from "@/components/AppImage";
 import Link from "next/link";
+
+// Responsive hero sources — phones grab a small file, desktops a larger one.
+// This is the LCP element, so we also preload it (link hoisted to <head> by React 19).
+const HERO_SRCSET =
+  "/images/ep-640.webp 640w, /images/ep-828.webp 828w, /images/ep-1086.webp 1086w";
 
 export default function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-oil">
+      {/* Preload the LCP hero image (responsive) */}
+      <link
+        rel="preload"
+        as="image"
+        imageSrcSet={HERO_SRCSET}
+        imageSizes="100vw"
+        fetchPriority="high"
+      />
       {/* Background - zoomed in on porch structure, sky cropped out */}
-      <Image
-        src="/images/ep.webp"
-        alt="Post-frame pole barn with a metal roof under construction by Rust & Sawdust in Somerset, KY"
-        fill
-        priority
-        className="object-cover object-[center_55%] opacity-80"
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/ep-1086.webp"
+        srcSet={HERO_SRCSET}
         sizes="100vw"
+        alt="Post-frame pole barn with a metal roof under construction by Rust & Sawdust in Somerset, KY"
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover object-[center_55%] opacity-80"
       />
       {/* Grit overlay + vignette */}
       <div className="absolute inset-0 bg-gradient-to-b from-oil/85 via-oil/45 to-oil/95" />
