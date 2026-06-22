@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Source_Sans_3, Anton, Special_Elite, Caveat } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import MobileCTABar from "@/components/MobileCTABar";
 import { SERVICES } from "@/lib/services";
 import "./globals.css";
 
@@ -257,7 +258,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          {/* Clearance so the fixed mobile call/text bar never hides footer content */}
+          <div aria-hidden className="md:hidden h-14" />
+        </ThemeProvider>
+        <MobileCTABar />
       </body>
     </html>
   );

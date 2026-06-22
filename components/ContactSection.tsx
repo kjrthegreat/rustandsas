@@ -127,6 +127,15 @@ export default function ContactSection() {
               <a href="tel:5025424473" className="font-stencil text-2xl text-charcoal dark:text-cream hover:text-rust dark:hover:text-cedar-pale transition-colors">502 · 542 · 4473</a>
             </div>
             <div className="flex items-baseline gap-3">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-walnut dark:text-stone w-16 shrink-0">Text</span>
+              <a
+                href="sms:5025424473?&body=Hi%20Rust%20%26%20Sawdust%20-%20I'd%20like%20a%20quote.%20Here's%20my%20project%3A"
+                className="font-stencil text-2xl text-charcoal dark:text-cream hover:text-rust dark:hover:text-cedar-pale transition-colors"
+              >
+                Text us photos →
+              </a>
+            </div>
+            <div className="flex items-baseline gap-3">
               <span className="text-[10px] uppercase tracking-[0.25em] text-walnut dark:text-stone w-16 shrink-0">Email</span>
               <span className="text-charcoal dark:text-cream">rustandsawdustky@gmail.com</span>
             </div>
